@@ -7,17 +7,49 @@ main_routes = Blueprint("main_routes", __name__)
 #
 # GET /
 #
-
 @main_routes.route("/")
 def index():
     print("VISITING THE START PAGE")
     return render_template("start.html")
 
+@main_routes.route('/create', methods=["POST"])
+def create():
+    print("CREATING A NEW ROW...")
+    print("FORM DATA:", dict(request.form))
+    try:
+        row_attributes = {
+            "date": request.form["input_date"],
+            "hour": request.form["input_hour"]
+        }
+        print(row_attributes)
+        response = create_records(row_attributes["date"],row_attributes["hour"])
+        return redirect("/")
+    except Exception as err:
+        print("ERROR:", type(err), err.name)
+#        flash(f"ERROR: {err.name}. Please try again.", "danger") # use the "danger" category to correspond with twitter bootstrap alert colors
+        return redirect("/")
+
+
+
 #
-# GET /results
-# GET /results?choice=rock
-# POST /results
+#@main_routes.route("/create", methods=["GET", "POST"])
+#def results():
+#    print("VISITING THE RESULTS PAGE")
+#    print("REQUEST PARAMS:", dict(request.args))
+#    print("REQUEST VALUES:", dict(request.values))
+#    
+#    print(request.args)
+#    print(request.values)
 #
+#    user_date = request.args["date"]
+#    user_hour = request.args["hour"]
+
+
+
+
+
+
+
 
 
 

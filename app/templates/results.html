@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  <title>Time Tracker | Example Web App</title>
+{% endblock %}
+
+{% block content %}
+  <h2>Time Tracker</h2>
+  <p>Please type-in the work hour below...</p>
+
+  <p>You chose: {{ user_choice }}</p>
+  <p>The computer chose: {{ computer_choice }}</p>
+  <p>Results: {{ results_message }}</p>
+
+{% endblock %}
+

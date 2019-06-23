@@ -1,21 +1,21 @@
 {% extends "layout.html" %}
 
 {% block title %}
-  <title>New Product | Example Web App</title>
+  <title>Time Tracker | Example Web App</title>
 {% endblock %}
 
 {% block content %}
   <h2>Time Tracker</h2>
   <p>Please type-in the work hour below...</p>
 
-  <form action="/products/create" method="POST">
+  <form action="/create" method="POST">
 
-    <label>Work Hour:</label>
-    <input type="number" step="0.5" min="0" name="hour" value="4.99" >
+    <label>Date:</label>
+    <input type="date" name="input_date" value="2019-06-20">
     <br>
 
-    <label>Available as of:</label>
-    <input type="date" name="date" value="2019-01-01">
+    <label>Work Hour:</label>
+    <input type="number" step="0.5" min="0" name="input_hour" value="12" >
     <br>
 
     <button>Submit</button>
