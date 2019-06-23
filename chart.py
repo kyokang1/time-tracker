@@ -4,29 +4,30 @@ from app.time_tracker import get_records
 
 sheet, rows = get_records()
 
+# Get values from column "date"
 col_date = sheet.col_values(1)
-#print(type(col_date))
-#print(col_date)
+del col_date[col_date.index("date")] #Delete column heading
+
+# Get values from column "hour"
 col_hour = sheet.col_values(2)
-#print(type(col_hour))
-#print(col_hour)
-
-#rows = []
-#for row in rows:
-#    print(row)
-
-#print(row["date"])
+del col_hour[col_hour.index("hour")] #Delete column heading
 
 date=col_date
 hour=col_hour
-
-#date=["2019-01-01", "2019-01-02", "2019-01-03", "2019-01-04"]
-#hour=[8, 10, 9, 11]
 
 fig1, ax1 = plt.subplots()
 ax1.plot(date, hour)
 fig1.suptitle('Work Hour')
 plt.show() # need to explicitly "show" the chart window
+
+
+#date=["2019-01-01", "2019-01-02", "2019-01-03", "2019-01-04"]
+#hour=[8, 10, 9, 11]
+
+
+
+## TODO: 
+# 1) Scale the cart
 
 
 #breakpoint()
