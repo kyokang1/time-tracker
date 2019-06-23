@@ -5,13 +5,16 @@ from app.time_tracker import *
 main_routes = Blueprint("main_routes", __name__)
 
 #
-# GET /
+# START /
 #
 @main_routes.route("/")
 def index():
     print("VISITING THE START PAGE")
     return render_template("start.html")
 
+#
+# CREAT /
+#
 @main_routes.route('/create', methods=["POST"])
 def create():
     print("CREATING A NEW ROW...")
@@ -23,11 +26,19 @@ def create():
         }
         print(row_attributes)
         response = create_records(row_attributes["date"],row_attributes["hour"])
-        return redirect("/")
+        return redirect("/results")
     except Exception as err:
         print("ERROR:", type(err), err.name)
 #        flash(f"ERROR: {err.name}. Please try again.", "danger") # use the "danger" category to correspond with twitter bootstrap alert colors
-        return redirect("/")
+        return redirect("/results")
+
+#
+# RESULTS /
+#
+@main_routes.route("/results")
+def results():
+    print("VISITING THE RESULTS PAGE")
+    return render_template("results.html")
 
 
 

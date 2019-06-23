@@ -6,11 +6,19 @@
 
 {% block content %}
   <h2>Time Tracker</h2>
-  <p>Please type-in the work hour below...</p>
+  <p>Your daily working hours are shown as below...</p>
 
-  <p>You chose: {{ user_choice }}</p>
-  <p>The computer chose: {{ computer_choice }}</p>
-  <p>Results: {{ results_message }}</p>
+  <!-- {% if rows %}
+    <ul>
+    {% for row in rows %}
+      <li>{{ product["hour"] }}</li>
+    {% endfor %}
+    </ul>
+  {% else %}
+    <p>Records Not Found...</p>
+  {% endif %}
+  -->
+
 
 {% endblock %}
 
