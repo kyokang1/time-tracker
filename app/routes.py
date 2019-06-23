@@ -24,7 +24,7 @@ def create():
             "date": request.form["input_date"],
             "hour": request.form["input_hour"]
         }
-        print(row_attributes)
+        #print(row_attributes)
         response = create_records(row_attributes["date"],row_attributes["hour"])
         return redirect("/results")
     except Exception as err:
@@ -38,7 +38,32 @@ def create():
 @main_routes.route("/results")
 def results():
     print("VISITING THE RESULTS PAGE")
-    return render_template("results.html")
+    
+    sheet, rows = get_records()
+
+    # Get values from column "date"
+    col_date = sheet.col_values(1)
+    del col_date[col_date.index("date")] #Delete column heading
+
+    # Get values from column "hour"
+    col_hour = sheet.col_values(2)
+    del col_hour[col_hour.index("hour")] #Delete column heading
+
+    #date=col_date
+    #hour=col_hour
+    #
+    #fig1, ax1 = plt.subplots()
+    #ax1.plot(date, hour)
+    #fig1.suptitle('Work Hour')
+    #plt.show()
+
+    return render_template("results.html",
+        results_date = col_date,
+        results_hour = col_hour
+    )
+
+## TODO: Show Scatter Chart
+
 
 
 

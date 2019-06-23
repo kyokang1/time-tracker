@@ -7,18 +7,21 @@
 {% block content %}
   <h2>Time Tracker</h2>
   <p>Your daily working hours are shown as below...</p>
+    
+  <li>{{ results_date }}</li>
+  <li>{{ results_hour }}</li>
 
   <!-- {% if rows %}
     <ul>
     {% for row in rows %}
-      <li>{{ product["hour"] }}</li>
+      <li>{{ results_date }}</li>
+      <li>{{ results_hour }}</li>
     {% endfor %}
     </ul>
   {% else %}
     <p>Records Not Found...</p>
   {% endif %}
   -->
-
 
 {% endblock %}
 
