@@ -1,17 +1,34 @@
+import matplotlib.pyplot as plt
+
+date=["2019-01-01", "2019-01-02", "2019-01-03", "2019-01-04"]
+hour=[8, 10, 9, 11]
+
+fig1, ax1 = plt.subplots()
+ax1.plot(date, hour)
+plt.show() # need to explicitly "show" the chart window
+
+
+
+breakpoint()
+
+#sizes, labels=labels, autopct='%1.1f%%', shadow=True, startangle=90
+
+#labels = ["Product A", "Product B", "Product C", "Product D"]
+#sizes = [15, 30, 45, 10]
+
 
 import plotly
 import plotly.graph_objs as go
 
 ## Question: Why is it working only in Python command line?
 
-date=["2019-01-01", "2019-01-02", "2019-01-03", "2019-01-04"]
-hour=[8, 10, 9, 11]
 
 plotly.offline.plot({
     "data": [go.Scatter(x=date, y=hour)],
     "layout": go.Layout(title="Daily Working Hour")
 }, auto_open=True)
 
+go.show()
 
 
 
