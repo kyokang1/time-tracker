@@ -4,3 +4,4 @@ gunicorn
 gspread
 oauth2client
 pylint
+plotly
