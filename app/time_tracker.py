@@ -29,7 +29,7 @@ def get_records():
     return sheet, rows
 
 def create_records(a, b):
-    response = sheet.insert_row([a, b])
+    response = sheet.insert_row(a, b)
     return response
 
 #def format_date:

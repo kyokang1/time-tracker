@@ -1,7 +1,27 @@
 import matplotlib.pyplot as plt
 
-date=["2019-01-01", "2019-01-02", "2019-01-03", "2019-01-04"]
-hour=[8, 10, 9, 11]
+from app.time_tracker import get_records
+
+sheet, rows = get_records()
+
+col_date = sheet.col_values(1)
+#print(type(col_date))
+#print(col_date)
+col_hour = sheet.col_values(2)
+#print(type(col_hour))
+#print(col_hour)
+
+#rows = []
+#for row in rows:
+#    print(row)
+
+#print(row["date"])
+
+date=col_date
+hour=col_hour
+
+#date=["2019-01-01", "2019-01-02", "2019-01-03", "2019-01-04"]
+#hour=[8, 10, 9, 11]
 
 fig1, ax1 = plt.subplots()
 ax1.plot(date, hour)
