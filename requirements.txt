@@ -3,3 +3,4 @@ Flask
 gunicorn
 gspread
 oauth2client
+pylint
