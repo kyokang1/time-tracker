@@ -19,14 +19,48 @@ scope = [
     'https://www.googleapis.com/auth/drive'
     ]
 
-
 def get_records():
     credentials = ServiceAccountCredentials.from_json_keyfile_name(CREDENTIALS_FILEPATH, scope)
     client = gspread.authorize(credentials)
     sheet = client.open("timetracker").sheet1
-    rows = sheet.get_all_values() #> <class 'list'>
+    rows = sheet.get_all_records()
     return sheet, rows
 
+if __name__ == "__main__":
+    sheet, rows = get_records()
+    
+    for row in rows:
+        print(row)
+    
+
+#def get_records():
+
+
+
+#def add_row():
+#    return sheet.insert_row(["2019-06-11", "13"])
+
+#add_row()
+
+#def update_row()
+    
+
+#def get_records():
+#    rows = sheet.get_all_values() #> <class 'list'>
+#    return sheet, rows
+
+#print(list(get_records()))
+
+#def create_records():
+#
+#    product = {
+#        "date": next_id,
+#        "hour": product_attributes["name"],
+#    }
+#    next_row = list(product.values()) #> [13, 'Product CLI', 'snacks', 4.99, '2019-01-01']
+#    next_row_number = len(products) + 2 # number of records, plus a header row, plus one
+#    response = sheet.insert_row(next_row, next_row_number)
+#    return response
 
 
 # Extract and print all of the values
