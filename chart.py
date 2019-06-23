@@ -20,14 +20,12 @@ ax1.plot(date, hour)
 fig1.suptitle('Work Hour')
 plt.show() # need to explicitly "show" the chart window
 
-
 #date=["2019-01-01", "2019-01-02", "2019-01-03", "2019-01-04"]
 #hour=[8, 10, 9, 11]
 
-
-
 ## TODO: 
-# 1) Scale the cart
+# 1) Scale the chart
+# 2) Implement the chart to the browser
 
 
 #breakpoint()
