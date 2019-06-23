@@ -17,7 +17,7 @@ scope = [
     "https://spreadsheets.google.com/feeds",
     "https://www.googleapis.com/auth/spreadsheets", #> Allows read/write access to the user's sheets and their properties.
     "https://www.googleapis.com/auth/drive.file", #> Per-file access to files created or opened by the app.
-    'https://www.googleapis.com/auth/drive'
+    'https://www.googleapis.com/auth/drive'  #> without this, it does not fetch the data
     ]
 
 credentials = ServiceAccountCredentials.from_json_keyfile_name(CREDENTIALS_FILEPATH, scope)
@@ -44,6 +44,8 @@ if __name__ == "__main__":
     hour_input = input("Please input hours: ")
     
     create_records(str(date_input), float(hour_input))
+    
+
 
 ## TODO (as of Jun/22/2019):
 ## 1) Insert a new row in the bottom
