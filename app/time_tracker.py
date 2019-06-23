@@ -48,15 +48,7 @@ if __name__ == "__main__":
 ## TODO (as of Jun/22/2019):
 ## 1) Insert a new row in the bottom
 ## 2) Date should be in date format
-
-
-
-#def add_row():
-#    return sheet.insert_row(["2019-06-11", "13"])
-
-#add_row()
-
-#def update_row()
+## 3) If the input date already existing, update the existing row
 
 
 
