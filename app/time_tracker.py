@@ -2,6 +2,7 @@
 import json
 import os
 import datetime
+import statistics
 
 from dotenv import load_dotenv
 import gspread
@@ -32,19 +33,42 @@ def create_records(a, b):
     response = sheet.insert_row([a, b])
     return response
 
-#def format_date:
 
 if __name__ == "__main__":
     sheet, rows = get_records()
+    
+    #for row in rows:
+    #    print(row)
+    
+    #a = '2010-01-31'
 
-    for row in rows:
-        print(row)
     
-    date_input = input("Please input date: ")
-    hour_input = input("Please input hours: ")
+
+    #dates = [row["date"] for row in rows]
+
+    #date_format = datetime.datetime.strptime(dates, "%Y-%m-%d")
+    #print(datee.month)
+    #print(dates)
+
+
+
+    hours = [row["hour"] for row in rows]
+    avg_hour = statistics.mean(hours)
+    print(round(avg_hour,1))
+
     
-    create_records(date_input, float(hour_input))
+
+
+
+
+    #date_input = input("Please input date: ")
+    #hour_input = input("Please input hours: ")
     
+    #create_records(date_input, float(hour_input))
+    
+
+
+
 
 
 ## TODO (as of Jun/22/2019):
@@ -52,6 +76,8 @@ if __name__ == "__main__":
 ## 2) Date should be in date format
 ## 3) If the input date already existing, update the existing row
 
+## TODO - Calculation (as of Jun/24/2019)
+## 
 
 
 

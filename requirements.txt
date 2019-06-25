@@ -5,4 +5,5 @@ gspread
 oauth2client
 pylint
 plotly
-plotly.graph_objs
+matplotlib
+
