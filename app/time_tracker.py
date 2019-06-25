@@ -33,28 +33,27 @@ def create_records(a, b):
     response = sheet.insert_row([a, b])
     return response
 
+def evaluate_hour(hr):
+    if hr <= 8:
+        return "Safe"
+    elif hr > 8 and hr <= 9:
+        return "Watch"
+    elif hr > 9 and hr <= 10:
+        return "Warning"
+    else:
+        return "Danger"
+
 
 if __name__ == "__main__":
     sheet, rows = get_records()
     
-    #for row in rows:
-    #    print(row)
-    
-    #a = '2010-01-31'
-
-    
-
-    #dates = [row["date"] for row in rows]
-
-    #date_format = datetime.datetime.strptime(dates, "%Y-%m-%d")
-    #print(datee.month)
-    #print(dates)
-
-
-
+    #Evaluate Hour
     hours = [row["hour"] for row in rows]
     avg_hour = statistics.mean(hours)
     print(round(avg_hour,1))
+    print(evaluate_hour(avg_hour))
+
+
 
     
 
