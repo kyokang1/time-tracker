@@ -50,27 +50,12 @@ def evaluate_hour(hr):
         evaluation = "Danger"
     return evaluation
 
-
 if __name__ == "__main__":
     sheet, rows = get_records()
     
-    print(type(rows))
-    #list(rows.keys())
-    #list(rows.values())
-    #list(rows.items())
-
-    breakpoint()
-
-    #date
-
-    print(dates.month)
-
-
     #Evaluate Hour
-    hours = [row["hour"] for row in rows]
-    avg_hour = statistics.mean(hours)
-    print(round(avg_hour,1))
-    print(evaluate_hour(avg_hour))
+    hr = 11
+    print(evaluate_hour(hr))
 
 
 
