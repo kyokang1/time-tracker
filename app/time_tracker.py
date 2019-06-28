@@ -29,14 +29,15 @@ def get_records():
     rows = sheet.get_all_records()
     return sheet, rows
 
-def create_records(a, b):
+def create_records(a, b, c):
     sheet, rows = get_records()
     dates = [row["date"] for row in rows]
     if a in dates:
         cell = sheet.find(a)
         response = sheet.update_cell(cell.row, cell.col+1, float(b))
+        response = sheet.update_cell(cell.row, cell.col+2, c)
     else:
-        response = sheet.append_row([a, float(b)])
+        response = sheet.append_row([a, float(b), c])
     return response
 
 def day_of_week(d):
@@ -72,50 +73,15 @@ def evaluate_hour(hr):
 if __name__ == "__main__":
     sheet, rows = get_records()
     
-#    print(day_of_week("2019-06-27"))
-
-#    dates = [row["date"] for row in rows]
-#    for d in dates:
-#        yyyy, mm, dd = [int(d) for d in d.split('-')]
-#    print(dd)
-#    breakpoint()
-#    ans = datetime.date(yyyy, mm, dd).weekday()
-#    print(ans)
-
-    
-#    print(datetime.datetime.ans().weekday())
-
-
-
-#    print(d)
-
-
-
-    #Evaluate Hour
-    #hr = 11
-    #print(evaluate_hour(hr))
-
-
-
-    
-
-
-
-
-    #date_input = input("Please input date: ")
-    #hour_input = input("Please input hours: ")
-    
-    #create_records(date_input, float(hour_input))
-    
 
 
 
 
 
-## TODO (as of Jun/22/2019):
-## 1) Insert a new row in the bottom
-## 2) Date should be in date format
-## 3) If the input date already existing, update the existing row
+## TODO (as of Jun/22/2019): (DONE)
+## 1) Insert a new row in the bottom (DONE)
+## 2) Date should be in date format (DONE)
+## 3) If the input date already existing, update the existing row (DONE)
 
 ## TODO - Calculation (as of Jun/24/2019)
 ## 

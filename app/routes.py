@@ -25,7 +25,8 @@ def create():
             "hour": request.form["input_hour"]
         }
         #print(row_attributes)
-        response = create_records(row_attributes["date"],row_attributes["hour"])
+        row_dow = day_of_week(row_attributes["date"])
+        response = create_records(row_attributes["date"],row_attributes["hour"], row_dow)
         return redirect("/results")
     except Exception as err:
         print("ERROR:", type(err), err.name)
