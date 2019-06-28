@@ -30,7 +30,7 @@ def get_records():
     return sheet, rows
 
 def create_records(a, b):
-    response = sheet.insert_row([a, b])
+    response = sheet.append_row([a, float(b)])
     return response
 
 def evaluate_hour(hr):
@@ -47,6 +47,19 @@ def evaluate_hour(hr):
 if __name__ == "__main__":
     sheet, rows = get_records()
     
+    print(type(rows))
+    list(rows.keys())
+    list(rows.values())
+    list(rows.items())
+
+    breakpoint()
+
+    #date
+    dates = [row["date"] for row in rows]
+
+    print(dates.month)
+
+
     #Evaluate Hour
     hours = [row["hour"] for row in rows]
     avg_hour = statistics.mean(hours)
