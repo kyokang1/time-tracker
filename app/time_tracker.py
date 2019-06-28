@@ -30,32 +30,38 @@ def get_records():
     return sheet, rows
 
 def create_records(a, b):
-    response = sheet.append_row([a, float(b)])
+    sheet, rows = get_records()
+    dates = [row["date"] for row in rows]
+    if a in dates:
+        cell = sheet.find(a)
+        response = sheet.update_cell(cell.row, cell.col+1, float(b))
+    else:
+        response = sheet.append_row([a, float(b)])
     return response
 
 def evaluate_hour(hr):
     if hr <= 8:
-        return "Safe"
+        evaluation = "Safe"
     elif hr > 8 and hr <= 9:
-        return "Watch"
+        evaluation = "Watch"
     elif hr > 9 and hr <= 10:
-        return "Warning"
+        evaluation = "Warning"
     else:
-        return "Danger"
+        evaluation = "Danger"
+    return evaluation
 
 
 if __name__ == "__main__":
     sheet, rows = get_records()
     
     print(type(rows))
-    list(rows.keys())
-    list(rows.values())
-    list(rows.items())
+    #list(rows.keys())
+    #list(rows.values())
+    #list(rows.items())
 
     breakpoint()
 
     #date
-    dates = [row["date"] for row in rows]
 
     print(dates.month)
 
