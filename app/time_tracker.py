@@ -39,6 +39,25 @@ def create_records(a, b):
         response = sheet.append_row([a, float(b)])
     return response
 
+def day_of_week(d):
+    yyyy, mm, dd = (int(d) for d in d.split('-'))
+    dow_no = datetime.date(yyyy, mm, dd).weekday()
+    if dow_no == 0:
+        dow = "Mon"
+    elif dow_no == 1:
+        dow = "Tue"
+    elif dow_no == 2:
+        dow = "Wed"
+    elif dow_no == 3:
+        dow = "Thu"
+    elif dow_no == 4:
+        dow = "Fri"
+    elif dow_no == 5:
+        dow = "Sat"
+    elif dow_no == 6:
+        dow = "Sun"
+    return dow
+
 def evaluate_hour(hr):
     if hr <= 8:
         evaluation = "Safe"
@@ -53,9 +72,28 @@ def evaluate_hour(hr):
 if __name__ == "__main__":
     sheet, rows = get_records()
     
+#    print(day_of_week("2019-06-27"))
+
+#    dates = [row["date"] for row in rows]
+#    for d in dates:
+#        yyyy, mm, dd = [int(d) for d in d.split('-')]
+#    print(dd)
+#    breakpoint()
+#    ans = datetime.date(yyyy, mm, dd).weekday()
+#    print(ans)
+
+    
+#    print(datetime.datetime.ans().weekday())
+
+
+
+#    print(d)
+
+
+
     #Evaluate Hour
-    hr = 11
-    print(evaluate_hour(hr))
+    #hr = 11
+    #print(evaluate_hour(hr))
 
 
 
