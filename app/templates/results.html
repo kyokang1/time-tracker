@@ -6,32 +6,28 @@
 
 {% block content %}
   <h2>Result - Month</h2>
-    
-  <p>Average Daily Work Hour: </p> 
-  <h3>{{ mtd_avg_hour }} </h3>
-  <h4><a href="https://plot.ly/~kyokang1/0/#/" target="_blank">Previous Month Data</a></h4>
   <br>
-  
+
+  <p>Average Daily Work Hour: </p> 
+  <h3><a href="https://plot.ly/~kyokang1/0/#/" target="_blank">{{ mtd_avg_hour }}</a></h3>  
   <p>Total Work Hour: </p> 
   <h3>{{ mtd_hour }} </h3>
   <p>Work-Life Balance Status: </p> 
   <h3> {{ mtd_eval }} </h3>
   <br>
-  <br>
-  
+  <hr>
 
   <h2>Result - Year</h2>
     
   <p>Average Daily Work Hour: </p> 
-  <h3>{{ ytd_avg_hour }} </h3>
-  <h4><a href="https://plot.ly/~kyokang1/0/#/" target="_blank">Previous Month Data</a></h4>
+  <h3><a href="https://plot.ly/~kyokang1/0/#/" target="_blank">{{ ytd_avg_hour }}</a></h3>  
   <br>
   <p>Total Work Hour: </p> 
   <h3>{{ ytd_hour }} </h3>
   <p>Work-Life Balance Status: </p> 
   <h3>{{ ytd_eval }} </h3>
+  <br>
 
-<!--  <img src="{{ user_img }}" alt="Monthly Average Work Hour" width="600" height="400"/> -->
 
 
 {% endblock %}
