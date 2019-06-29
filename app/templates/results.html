@@ -7,16 +7,20 @@
 {% block content %}
   <h2>Result - Month</h2>
     
-  <p>Average Working Hour This Month: </p> 
+  <p>Average Daily Work Hour: </p> 
+  <h3>{{ mtd_avg_hour }} </h3>
+  <p>Total Work Hour: </p> 
   <h3>{{ mtd_hour }} </h3>
   <p>Work-Life Balance Status: </p> 
-  <h3>{{ mtd_eval }} </h3>
+  <h3> {{ mtd_eval }} </h3>
 
   <img src="{{ user_img }}" alt="Monthly Average Work Hour" width="600" height="400"/> 
 
   <h2>Result - Year</h2>
     
-  <p>Average Working Hour This Year: </p> 
+  <p>Average Daily Work Hour: </p> 
+  <h3>{{ ytd_avg_hour }} </h3>
+  <p>Total Work Hour: </p> 
   <h3>{{ ytd_hour }} </h3>
   <p>Work-Life Balance Status: </p> 
   <h3>{{ ytd_eval }} </h3>

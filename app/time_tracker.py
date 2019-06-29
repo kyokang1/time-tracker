@@ -85,9 +85,16 @@ def month_id():
     return month_id
 
 #Calculate - average hour_ytd
-def avg_hour_ytd(c_year):
+def total_hour_ytd(i_year):
     sheet, rows = get_records()
-    rows_year = [r for r in rows if str(r["yyyy"]) == str(c_year)]
+    rows_year = [r for r in rows if str(r["yyyy"]) == str(i_year)]
+    rows_year_hr = [r["hour"] for r in rows_year]
+    total_hr_ytd = round(list_total(rows_year_hr),1)
+    return total_hr_ytd
+
+def avg_hour_ytd(i_year):
+    sheet, rows = get_records()
+    rows_year = [r for r in rows if str(r["yyyy"]) == str(i_year)]
     rows_year_hr = [r["hour"] for r in rows_year]
     total_hr_ytd = list_total(rows_year_hr)   
     rows_year_w = [r for r in rows_year if dow_week(r["dayofweek"]) == True]
@@ -96,10 +103,18 @@ def avg_hour_ytd(c_year):
     return avg_hr_ytd
     
 #Calculate - average hour_mtd
-def avg_hour_mtd(c_year, c_month):
+def total_hour_mtd(i_year, i_month):
     sheet, rows = get_records()
-    rows_year = [r for r in rows if str(r["yyyy"]) == str(c_year)]
-    rows_month = [r for r in rows_year if str(r["mm"]) == str(c_month)]
+    rows_year = [r for r in rows if str(r["yyyy"]) == str(i_year)]
+    rows_month = [r for r in rows_year if str(r["mm"]) == str(i_month)]
+    rows_month_hr = [r["hour"] for r in rows_month]
+    total_hr_mtd = round(list_total(rows_month_hr),1)
+    return total_hr_mtd
+
+def avg_hour_mtd(i_year, i_month):
+    sheet, rows = get_records()
+    rows_year = [r for r in rows if str(r["yyyy"]) == str(i_year)]
+    rows_month = [r for r in rows_year if str(r["mm"]) == str(i_month)]
     rows_month_hr = [r["hour"] for r in rows_month]
     total_hr_mtd = list_total(rows_month_hr)   
     rows_month_w = [r for r in rows_month if dow_week(r["dayofweek"]) == True]
@@ -109,14 +124,15 @@ def avg_hour_mtd(c_year, c_month):
 
 def evaluate_hour(hr):
     if hr <= 8:
-        evaluation = "Safe"
+        evaluation = "SAFE"
     elif hr > 8 and hr <= 9:
-        evaluation = "Watch"
+        evaluation = "WATCH"
     elif hr > 9 and hr <= 10:
-        evaluation = "Warning"
+        evaluation = "WARNING"
     else:
-        evaluation = "Danger"
+        evaluation = "DANGER"
     return evaluation
+
 
 #def img_upload():
 #    upload_folder = os.path.join("..", "img")
@@ -124,9 +140,6 @@ def evaluate_hour(hr):
 #    app.config['UPLOAD_FOLDER'] = upload_folder
 #    img_filepath = os.path.join(app.config['UPLOAD_FOLDER'], 'fig1.png')
 #    img_filepath = os.path.join(os.path.dirname(__file__), "..", "img","fig1.png")
-
-    
-
 
 
 #
@@ -137,22 +150,11 @@ if __name__ == "__main__":
     sheet, rows = get_records()
 
 
-#    img_filepath = os.path.join(os.path.dirname(__file__), "..", "img","fig1.png")
 
     breakpoint()
 
 
 
-
-#    c_year = datetime.datetime.now().year
-#    c_month = datetime.datetime.now().month
-#
-#    avg_hr_ytd = avg_hour_ytd(c_year)
-#    avg_hr_mtd = avg_hour_mtd(c_year, c_month)
-#
-#    eval_ytd = evaluate_hour(avg_hr_ytd)
-#    eval_mtd = evaluate_hour(avg_hr_mtd)
-#
 #    print(avg_hr_ytd)
 #    print(avg_hr_mtd)
 #    print(eval_ytd)

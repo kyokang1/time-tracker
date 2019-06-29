@@ -31,45 +31,44 @@ rows_year_hr = [r["hour"] for r in rows_year]
 #    y= rows_year_hr
 #)]
 
-trace0 = go.Scatter(
-    x=[3.5],
-    y=[1.9],
-    text=['Horizontal Dashed Line'],
-    mode='text',
-)
-data = [trace0]
-layout = {
-#    'xaxis': {
-#        'range': [0, 7]
-#    },
-#    'yaxis': {
-#        'range': [0, 2.5]
-#    },
-    'shapes': [
-        # Line Horizontal
-        {
-            'type': 'line',
-            'x0': 0,
-            'y0': 8,
-            'x1': 10,
-            'y1': 8,
-            'line': {
-                'color': 'rgb(50, 171, 96)',
-                'width': 4,
-                'dash': 'dashdot',
-            },
-        },
-    ]
-}
-
-fig = {
-    'data': data,
-    'layout': layout,
-}
-
+#trace0 = go.Scatter(
+#    x=[3.5],
+#    y=[1.9],
+#    text=['Horizontal Dashed Line'],
+#    mode='text',
+#)
+#data = [trace0]
+#layout = {
+##    'xaxis': {
+##        'range': [0, 7]
+##    },
+##    'yaxis': {
+##        'range': [0, 2.5]
+##    },
+#    'shapes': [
+#        # Line Horizontal
+#        {
+#            'type': 'line',
+#            'x0': 0,
+#            'y0': 8,
+#            'x1': 10,
+#            'y1': 8,
+#            'line': {
+#                'color': 'rgb(50, 171, 96)',
+#                'width': 4,
+#                'dash': 'dashdot',
+#            },
+#        },
+#    ]
+#}
+#
+#fig = {
+#    'data': data,
+#    'layout': layout,
+#}
+#
 #py.iplot(fig, filename='shapes-lines', auto_open=True)
-
 #py.plot(data, filename = 'basic-line', auto_open=True)
 
-pio.write_image(fig, "img/fig1.png")
+pio.write_image(fig, "app/static/fig1.png")
 
