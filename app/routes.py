@@ -26,7 +26,8 @@ def create():
         }
         #print(row_attributes)
         row_dow = day_of_week(row_attributes["date"])
-        response = create_records(row_attributes["date"],row_attributes["hour"], row_dow)
+        row_yyyy, row_mm, row_dd = (row_attributes["date"].split('-'))
+        response = create_records(row_attributes["date"],row_attributes["hour"], row_dow, row_yyyy, row_mm)
         return redirect("/results")
     except Exception as err:
         print("ERROR:", type(err), err.name)

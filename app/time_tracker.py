@@ -29,7 +29,7 @@ def get_records():
     rows = sheet.get_all_records()
     return sheet, rows
 
-def create_records(a, b, c):
+def create_records(a, b, c, d, e):
     sheet, rows = get_records()
     dates = [row["date"] for row in rows]
     if a in dates:
@@ -37,7 +37,7 @@ def create_records(a, b, c):
         response = sheet.update_cell(cell.row, cell.col+1, float(b))
         response = sheet.update_cell(cell.row, cell.col+2, c)
     else:
-        response = sheet.append_row([a, float(b), c])
+        response = sheet.append_row([a, float(b), c, d, e])
     return response
 
 def day_of_week(d):
@@ -72,7 +72,15 @@ def evaluate_hour(hr):
 
 if __name__ == "__main__":
     sheet, rows = get_records()
-    
+
+#   temp = "2019-06-01"
+#   row_yyyy, row_mm, row_dd = (temp.split('-'))
+#   print(row_yyyy)
+#   print(row_mm)
+#
+#   breakpoint()
+
+
 
 
 
@@ -83,8 +91,9 @@ if __name__ == "__main__":
 ## 2) Date should be in date format (DONE)
 ## 3) If the input date already existing, update the existing row (DONE)
 
-## TODO - Calculation (as of Jun/24/2019)
-## 
+## TODO - Calculation (as of Jun/28/2019)
+## 1) create yyyy, mm, dd when parsing inputs
+## 2) calculate by yyyy, and mm
 
 
 
