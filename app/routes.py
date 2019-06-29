@@ -1,4 +1,5 @@
 from flask import Blueprint, request, render_template, jsonify, flash, redirect
+import datetime
 
 from app.time_tracker import *
 
@@ -40,11 +41,11 @@ def create():
 def results():
     print("VISITING THE RESULTS PAGE")
     
-    c_year = 2018
-    c_month = 5
+    c_year = datetime.datetime.now().year
+    c_month = datetime.datetime.now().month   
     
-    result_avg_hr_ytd = avg_hour_ytd(c_year)
-    result_avg_hr_mtd = avg_hour_mtd(c_year, c_month)
+    result_avg_hr_ytd = round(avg_hour_ytd(c_year),1)
+    result_avg_hr_mtd = round(avg_hour_mtd(c_year, c_month),1)
 
     return render_template("results.html",
         results_ytd = result_avg_hr_ytd,

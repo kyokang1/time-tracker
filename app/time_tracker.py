@@ -1,7 +1,6 @@
 
 import json
 import os
-#from datetime import datetime
 import datetime
 import statistics
 
@@ -72,6 +71,22 @@ def list_total(rows):
         sum = sum + r
     return sum
 
+
+#Define month_id
+def month_id():
+    c_year = datetime.datetime.now().year
+    c_month = datetime.datetime.now().month
+    month_id = str(c_year) + str("_") + str(c_month)
+    return month_id
+
+def c_year():
+    c_year = datetime.datetime.now().year
+    return c_year
+
+def c_month():
+    c_month = datetime.datetime.now().month
+    return c_month
+
 #Calculate - average hour_ytd
 def avg_hour_ytd(c_year):
     sheet, rows = get_records()
@@ -108,14 +123,14 @@ def evaluate_hour(hr):
 
 if __name__ == "__main__":
     sheet, rows = get_records()
-
-#    print(list(rows))
     
-    #Define month_id
-#    c_year = datetime.now().year
-#    c_month = datetime.now().month
-#    month_id = str(c_year) + str("_") + str(c_month)
-#    print(c_year)
+
+    c_year = datetime.datetime.now().year
+    c_month = datetime.datetime.now().month
+
+    print(c_year)
+    print(c_month)
+
     
 #    c_year = 2018
 #    c_month = 5
@@ -123,27 +138,7 @@ if __name__ == "__main__":
 #    print(avg_hour_ytd(c_year))
 #    print(avg_hour_mtd(c_year, c_month))
 
-#    #Calculate - total hour
-#    rows_year = [r for r in rows if str(r["yyyy"]) == str(c_year)]
-#    rows_month = [r for r in rows_year if str(r["mm"]) == str(c_month)]
-#    
-#    rows_year_hr = [r["hour"] for r in rows_year]
-#    rows_month_hr = [r["hour"] for r in rows_month]
-#
-#    total_hr_ytd = list_total(rows_year_hr)
-#    total_hr_mtd = list_total(rows_month_hr)
-#    
-#    #Calculate - count of weekdays
-#    rows_year_w = [r for r in rows_year if dow_week(r["dayofweek"]) == True]
-#    rows_month_w = [r for r in rows_month if dow_week(r["dayofweek"]) == True]
-#
-#    count_hr_ytd = len(rows_year_w)
-#    count_hr_mtd = len(rows_month_w)
-#
-#    #Calculate - average of hour
-#    avg_hr_ytd = total_hr_ytd/count_hr_ytd
-#    avg_hr_mtd = total_hr_mtd/count_hr_mtd
-#
+
 
 
     
