@@ -72,8 +72,28 @@ def list_total(rows):
         sum = sum + r
     return sum
 
-def avg_hour_ytd():
+#Calculate - average hour_ytd
+def avg_hour_ytd(c_year):
     sheet, rows = get_records()
+    rows_year = [r for r in rows if str(r["yyyy"]) == str(c_year)]
+    rows_year_hr = [r["hour"] for r in rows_year]
+    total_hr_ytd = list_total(rows_year_hr)   
+    rows_year_w = [r for r in rows_year if dow_week(r["dayofweek"]) == True]
+    count_hr_ytd = len(rows_year_w)
+    avg_hr_ytd = total_hr_ytd/count_hr_ytd
+    return avg_hr_ytd
+    
+#Calculate - average hour_mtd
+def avg_hour_mtd(c_year, c_month):
+    sheet, rows = get_records()
+    rows_year = [r for r in rows if str(r["yyyy"]) == str(c_year)]
+    rows_month = [r for r in rows_year if str(r["mm"]) == str(c_month)]
+    rows_month_hr = [r["hour"] for r in rows_month]
+    total_hr_mtd = list_total(rows_month_hr)   
+    rows_month_w = [r for r in rows_month if dow_week(r["dayofweek"]) == True]
+    count_hr_mtd = len(rows_month_w)
+    avg_hr_mtd = total_hr_mtd/count_hr_mtd
+    return avg_hr_mtd
 
 
 def evaluate_hour(hr):
@@ -98,6 +118,11 @@ if __name__ == "__main__":
 #    month_id = str(c_year) + str("_") + str(c_month)
 #    print(c_year)
 
+    c_year = 2018
+    c_month = 5
+
+    print(avg_hour_ytd(c_year))
+    print(avg_hour_mtd(c_year, c_month))
 
 #    #Calculate - total hour
 #    rows_year = [r for r in rows if str(r["yyyy"]) == str(c_year)]
@@ -122,28 +147,8 @@ if __name__ == "__main__":
 #
 
 
-    c_year = 2018
-    c_month = 5
 
-    #Calculate - average hour_ytd
-    rows_year = [r for r in rows if str(r["yyyy"]) == str(c_year)]
-    rows_year_hr = [r["hour"] for r in rows_year]
-    total_hr_ytd = list_total(rows_year_hr)   
-    rows_year_w = [r for r in rows_year if dow_week(r["dayofweek"]) == True]
-    count_hr_ytd = len(rows_year_w)
-    avg_hr_ytd = total_hr_ytd/count_hr_ytd
-    
-    #Calculate - average hour_mtd
-    rows_year = [r for r in rows if str(r["yyyy"]) == str(c_year)]
-    rows_month = [r for r in rows_year if str(r["mm"]) == str(c_month)]
-    rows_month_hr = [r["hour"] for r in rows_month]
-    total_hr_mtd = list_total(rows_month_hr)   
-    rows_month_w = [r for r in rows_month if dow_week(r["dayofweek"]) == True]
-    count_hr_mtd = len(rows_month_w)
-    avg_hr_mtd = total_hr_mtd/count_hr_mtd
 
-    print(avg_hr_ytd)
-    print(avg_hr_mtd)
 
     
 #    for a in rows_month_w:
