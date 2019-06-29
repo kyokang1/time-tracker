@@ -123,20 +123,27 @@ def evaluate_hour(hr):
 
 if __name__ == "__main__":
     sheet, rows = get_records()
+    
+    c_year = 2019
+    rows_year = [r for r in rows if str(r["yyyy"]) == str(c_year)]
+    rows_year_hr = [r["hour"] for r in rows_year]
 
-    c_year = datetime.datetime.now().year
-    c_month = datetime.datetime.now().month
 
-    avg_hr_ytd = avg_hour_ytd(c_year)
-    avg_hr_mtd = avg_hour_mtd(c_year, c_month)
 
-    eval_ytd = evaluate_hour(avg_hr_ytd)
-    eval_mtd = evaluate_hour(avg_hr_mtd)
+#    c_year = datetime.datetime.now().year
+#    c_month = datetime.datetime.now().month
+#
+#    avg_hr_ytd = avg_hour_ytd(c_year)
+#    avg_hr_mtd = avg_hour_mtd(c_year, c_month)
+#
+#    eval_ytd = evaluate_hour(avg_hr_ytd)
+#    eval_mtd = evaluate_hour(avg_hr_mtd)
+#
+#    print(avg_hr_ytd)
+#    print(avg_hr_mtd)
+#    print(eval_ytd)
+#    print(eval_mtd)
 
-    print(avg_hr_ytd)
-    print(avg_hr_mtd)
-    print(eval_ytd)
-    print(eval_mtd)
 
     
 #    for a in rows_month_w:
