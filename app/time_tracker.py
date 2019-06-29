@@ -95,31 +95,47 @@ if __name__ == "__main__":
 #    c_year = datetime.now().year
 #    c_month = datetime.now().month
 #    month_id = str(c_year) + str("_") + str(c_month)
-    print(c_year)
+#    print(c_year)
 
-#    
-#    #r = rows["date"]
-##    print(type(rows))
-##    print(rows)##
-#    #Calculate - total hour
-#    c_year = 2018
-#    c_month = 5
-#    rows_year = [r for r in rows if str(r["yyyy"]) == str(c_year)]
-#    rows_month = [r for r in rows_year if str(r["mm"]) == str(c_month)]#
-#    rows_year_hr = [r["hour"] for r in rows_year]
-#    rows_month_hr = [r["hour"] for r in rows_month]#
-#    total_hr_ytd = list_total(rows_year_hr)
-#    total_hr_mtd = list_total(rows_month_hr)#
-#    #Calculate - count of weekdays
-##    rows_year_w = [r for r in rows_year if r["dayofweek"] not in ["Mon", "Tue", "Wed", "Thu", "Fri"]]
-#    rows_year_w = [r for r in rows_year if dow_week(r["dayofweek"]) == True]
-#    rows_month_w = [r for r in rows_month if dow_week(r["dayofweek"]) == True]
-##    rows_month = [r for r in rows_year if str(r["mm"]) == str(c_month)]
-#    print(rows_year_w)
-##    print(rows_month_w)
+    
+    #r = rows["date"]
+#    print(type(rows))
+#    print(rows)##
+
+    #Calculate - total hour
+    c_year = 2018
+    c_month = 5
+    rows_year = [r for r in rows if str(r["yyyy"]) == str(c_year)]
+    rows_month = [r for r in rows_year if str(r["mm"]) == str(c_month)]
+    
+    rows_year_hr = [r["hour"] for r in rows_year]
+    rows_month_hr = [r["hour"] for r in rows_month]
+
+    total_hr_ytd = list_total(rows_year_hr)
+    total_hr_mtd = list_total(rows_month_hr)
+    
+    #Calculate - count of weekdays
+    rows_year_w = [r for r in rows_year if dow_week(r["dayofweek"]) == True]
+    rows_month_w = [r for r in rows_month if dow_week(r["dayofweek"]) == True]
+
+    count_hr_ytd = len(rows_year_w)
+    count_hr_mtd = len(rows_month_w)
+
+    #Calculate - average of hour
+    avg_hr_ytd = total_hr_ytd/count_hr_ytd
+    avg_hr_mtd = total_hr_mtd/count_hr_mtd
+    
+    print(avg_hr_ytd)
+    print(avg_hr_mtd)
 
 
 
+
+    
+#    for a in rows_month_w:
+#        print(a)
+
+#    print(rows_month_w)
     
 
 
