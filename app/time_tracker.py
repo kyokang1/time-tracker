@@ -2,6 +2,7 @@
 import json
 import os
 import datetime
+from datetime import datetime
 import statistics
 
 from dotenv import load_dotenv
@@ -59,6 +60,12 @@ def day_of_week(d):
         dow = "Sun"
     return dow
 
+def avg_hour(total_hr, count_wday):
+    return total_hr/count_wday
+
+
+
+
 def evaluate_hour(hr):
     if hr <= 8:
         evaluation = "Safe"
@@ -73,11 +80,13 @@ def evaluate_hour(hr):
 if __name__ == "__main__":
     sheet, rows = get_records()
 
-#   temp = "2019-06-01"
-#   row_yyyy, row_mm, row_dd = (temp.split('-'))
-#   print(row_yyyy)
-#   print(row_mm)
-#
+#    print(list(rows))
+    
+    c_month = datetime.now().month
+    print(c_month)
+
+
+
 #   breakpoint()
 
 
@@ -90,6 +99,8 @@ if __name__ == "__main__":
 ## 1) Insert a new row in the bottom (DONE)
 ## 2) Date should be in date format (DONE)
 ## 3) If the input date already existing, update the existing row (DONE)
+## 4) Validate input (Pass, input box is "number")
+
 
 ## TODO - Calculation (as of Jun/28/2019)
 ## 1) create yyyy, mm, dd when parsing inputs

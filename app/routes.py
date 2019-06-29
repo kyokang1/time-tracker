@@ -43,6 +43,14 @@ def results():
     
     sheet, rows = get_records()
 
+    #Monthly result
+
+
+
+    #YTD result
+
+
+
     # Get values from column "date"
     col_date = sheet.col_values(1)
     del col_date[col_date.index("date")] #Delete column heading
