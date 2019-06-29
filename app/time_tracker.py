@@ -4,6 +4,12 @@ import os
 import datetime
 import statistics
 
+import plotly
+import plotly.plotly as py
+import plotly.graph_objs as go
+import plotly.io as pio
+import plotly.offline as offline
+
 from flask import Flask, Blueprint, request, render_template, jsonify, flash, redirect
 
 from dotenv import load_dotenv
@@ -148,6 +154,23 @@ def evaluate_hour(hr):
 
 if __name__ == "__main__":
     sheet, rows = get_records()
+
+    c_year = datetime.datetime.now().year
+    c_month = datetime.datetime.now().month   
+
+    year_span =[]
+    year_inc = 2009
+    while True:
+        year_span.append(year_inc)
+        if year_inc == c_year:
+            break
+        else:
+            year_inc = year_inc +1
+
+    historic_avg_hour = []
+    for i in year_span:
+        avg_hr_update = avg_hour_ytd(i)
+        historic_avg_hour.append(avg_hr_update)
 
 
 
