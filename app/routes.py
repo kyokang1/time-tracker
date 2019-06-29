@@ -1,5 +1,6 @@
-from flask import Blueprint, request, render_template, jsonify, flash, redirect
+from flask import Flask, Blueprint, request, render_template, jsonify, flash, redirect, url_for
 import datetime
+import os
 
 from app.time_tracker import *
 
@@ -37,9 +38,9 @@ def create():
 #
 # RESULTS /
 #
-@main_routes.route("/results")
+@main_routes.route("/results", methods=["GET", "POST"])
 def results():
-    print("VISITING THE RESULTS PAGE")
+    print("VISITING THE MONTHLY RESULT PAGE")
     
     c_year = datetime.datetime.now().year
     c_month = datetime.datetime.now().month   
@@ -49,12 +50,15 @@ def results():
 
     eval_ytd = evaluate_hour(avg_hr_ytd)
     eval_mtd = evaluate_hour(avg_hr_mtd)
-    
+
+    img_filepath = url_for('static', filename='fig1.png')
+
     return render_template("results.html",
+        ytd_hour = avg_hr_ytd,
+        ytd_eval = eval_ytd,
         mtd_hour = avg_hr_mtd,
         mtd_eval = eval_mtd,
-        ytd_hour = avg_hr_ytd,
-        ytd_eval = eval_ytd
+        user_img = img_filepath
     )
 
 
@@ -71,19 +75,6 @@ def results():
 
 ## TODO: Show Scatter Chart
 
-
-#
-#@main_routes.route("/create", methods=["GET", "POST"])
-#def results():
-#    print("VISITING THE RESULTS PAGE")
-#    print("REQUEST PARAMS:", dict(request.args))
-#    print("REQUEST VALUES:", dict(request.values))
-#    
-#    print(request.args)
-#    print(request.values)
-#
-#    user_date = request.args["date"]
-#    user_hour = request.args["hour"]
 
 
 

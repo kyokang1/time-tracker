@@ -4,6 +4,8 @@ import os
 import datetime
 import statistics
 
+from flask import Flask, Blueprint, request, render_template, jsonify, flash, redirect
+
 from dotenv import load_dotenv
 import gspread
 
@@ -116,6 +118,16 @@ def evaluate_hour(hr):
         evaluation = "Danger"
     return evaluation
 
+#def img_upload():
+#    upload_folder = os.path.join("..", "img")
+#    app = Flask(__name__)
+#    app.config['UPLOAD_FOLDER'] = upload_folder
+#    img_filepath = os.path.join(app.config['UPLOAD_FOLDER'], 'fig1.png')
+#    img_filepath = os.path.join(os.path.dirname(__file__), "..", "img","fig1.png")
+
+    
+
+
 
 #
 # Maim Script
@@ -123,10 +135,12 @@ def evaluate_hour(hr):
 
 if __name__ == "__main__":
     sheet, rows = get_records()
-    
-    c_year = 2019
-    rows_year = [r for r in rows if str(r["yyyy"]) == str(c_year)]
-    rows_year_hr = [r["hour"] for r in rows_year]
+
+
+#    img_filepath = os.path.join(os.path.dirname(__file__), "..", "img","fig1.png")
+
+    breakpoint()
+
 
 
 

@@ -5,43 +5,22 @@
 {% endblock %}
 
 {% block content %}
-  <h2>Results</h2>
+  <h2>Result - Month</h2>
     
-  <p>Yearly Average Working Hour This Month: </p>
-  <li>{{ mtd_hour }}</li>
+  <p>Average Working Hour This Month: </p> 
+  <h3>{{ mtd_hour }} </h3>
+  <p>Work-Life Balance Status: </p> 
+  <h3>{{ mtd_eval }} </h3>
 
-  <head>
-      <!-- Plotly.js -->
-      <script src="https://plot.ly/~kyokang1/2/#/"></script>
-    </head>
+  <img src="{{ user_img }}" alt="Monthly Average Work Hour" width="600" height="400"/> 
+
+  <h2>Result - Year</h2>
     
-    <body>
-      
-      <div id="myDiv"><!-- Plotly chart will be drawn inside this DIV --></div>
-      <script>
-      </script>
-    </body>
+  <p>Average Working Hour This Year: </p> 
+  <h3>{{ ytd_hour }} </h3>
+  <p>Work-Life Balance Status: </p> 
+  <h3>{{ ytd_eval }} </h3>
 
-  <p>Evaluation: </p>
-  <li>{{ mtd_eval }}</li>
-
-  <p>Average Working Hour This Year: </p>
-  <li>{{ ytd_hour }}</li>
-
-  <p>Evaluation: </p>
-  <li>{{ ytd_eval }}</li>
-
-  <!-- {% if rows %}
-    <ul>
-    {% for row in rows %}
-      <li>{{ results_date }}</li>
-      <li>{{ results_hour }}</li>
-    {% endfor %}
-    </ul>
-  {% else %}
-    <p>Records Not Found...</p>
-  {% endif %}
-  -->
 
 {% endblock %}
 
