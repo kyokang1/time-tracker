@@ -25,6 +25,10 @@ credentials = ServiceAccountCredentials.from_json_keyfile_name(CREDENTIALS_FILEP
 client = gspread.authorize(credentials)
 sheet = client.open("timetracker").sheet1
 
+#
+# Defined Functions
+#
+
 def get_records():
     rows = sheet.get_all_records()
     return sheet, rows
@@ -71,21 +75,12 @@ def list_total(rows):
         sum = sum + r
     return sum
 
-
-#Define month_id
+#To-Be Used
 def month_id():
     c_year = datetime.datetime.now().year
     c_month = datetime.datetime.now().month
     month_id = str(c_year) + str("_") + str(c_month)
     return month_id
-
-def c_year():
-    c_year = datetime.datetime.now().year
-    return c_year
-
-def c_month():
-    c_month = datetime.datetime.now().month
-    return c_month
 
 #Calculate - average hour_ytd
 def avg_hour_ytd(c_year):
@@ -121,9 +116,13 @@ def evaluate_hour(hr):
         evaluation = "Danger"
     return evaluation
 
+
+#
+# Maim Script
+#
+
 if __name__ == "__main__":
     sheet, rows = get_records()
-    
 
     c_year = datetime.datetime.now().year
     c_month = datetime.datetime.now().month
@@ -138,16 +137,6 @@ if __name__ == "__main__":
     print(avg_hr_mtd)
     print(eval_ytd)
     print(eval_mtd)
-
-    
-#    c_year = 2018
-#    c_month = 5
-
-#    print(avg_hour_ytd(c_year))
-#    print(avg_hour_mtd(c_year, c_month))
-
-
-
 
     
 #    for a in rows_month_w:
