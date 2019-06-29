@@ -95,7 +95,7 @@ def avg_hour_ytd(c_year):
     total_hr_ytd = list_total(rows_year_hr)   
     rows_year_w = [r for r in rows_year if dow_week(r["dayofweek"]) == True]
     count_hr_ytd = len(rows_year_w)
-    avg_hr_ytd = total_hr_ytd/count_hr_ytd
+    avg_hr_ytd = round(total_hr_ytd/count_hr_ytd,1)
     return avg_hr_ytd
     
 #Calculate - average hour_mtd
@@ -107,7 +107,7 @@ def avg_hour_mtd(c_year, c_month):
     total_hr_mtd = list_total(rows_month_hr)   
     rows_month_w = [r for r in rows_month if dow_week(r["dayofweek"]) == True]
     count_hr_mtd = len(rows_month_w)
-    avg_hr_mtd = total_hr_mtd/count_hr_mtd
+    avg_hr_mtd = round(total_hr_mtd/count_hr_mtd,1)
     return avg_hr_mtd
 
 def evaluate_hour(hr):
@@ -128,8 +128,16 @@ if __name__ == "__main__":
     c_year = datetime.datetime.now().year
     c_month = datetime.datetime.now().month
 
-    print(c_year)
-    print(c_month)
+    avg_hr_ytd = avg_hour_ytd(c_year)
+    avg_hr_mtd = avg_hour_mtd(c_year, c_month)
+
+    eval_ytd = evaluate_hour(avg_hr_ytd)
+    eval_mtd = evaluate_hour(avg_hr_mtd)
+
+    print(avg_hr_ytd)
+    print(avg_hr_mtd)
+    print(eval_ytd)
+    print(eval_mtd)
 
     
 #    c_year = 2018

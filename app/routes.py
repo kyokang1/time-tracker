@@ -44,12 +44,17 @@ def results():
     c_year = datetime.datetime.now().year
     c_month = datetime.datetime.now().month   
     
-    result_avg_hr_ytd = round(avg_hour_ytd(c_year),1)
-    result_avg_hr_mtd = round(avg_hour_mtd(c_year, c_month),1)
+    avg_hr_ytd = avg_hour_ytd(c_year)
+    avg_hr_mtd = avg_hour_mtd(c_year, c_month)
 
+    eval_ytd = evaluate_hour(avg_hr_ytd)
+    eval_mtd = evaluate_hour(avg_hr_mtd)
+    
     return render_template("results.html",
-        results_ytd = result_avg_hr_ytd,
-        results_mtd = result_avg_hr_mtd
+        mtd_hour = avg_hr_mtd,
+        mtd_eval = eval_mtd,
+        ytd_hour = avg_hr_ytd,
+        ytd_eval = eval_ytd
     )
 
 

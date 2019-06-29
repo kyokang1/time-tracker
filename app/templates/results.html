@@ -8,11 +8,17 @@
   <h2>Time Tracker</h2>
   <p>Result</p>
     
-  <p>Your Average Working Hour This Year: </p>
-  <li>{{ results_ytd }}</li>
+  <p>Average Working Hour This Month: </p>
+  <li>{{ mtd_hour }}</li>
 
-  <p>Your Average Working Hour This Month: </p>
-  <li>{{ results_mtd }}</li>
+  <p>Evaluation: </p>
+  <li>{{ mtd_eval }}</li>
+
+  <p>Average Working Hour This Year: </p>
+  <li>{{ ytd_hour }}</li>
+
+  <p>Evaluation: </p>
+  <li>{{ ytd_eval }}</li>
 
   <!-- {% if rows %}
     <ul>
