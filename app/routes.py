@@ -43,18 +43,6 @@ def results():
     
     sheet, rows = get_records()
 
-    #Define month_id
-#    c_year = datetime.now().year
-#    c_month = datetime.now().month
-#    month_id = str(c_year) + str("_") + str(c_month)
-    
-    #Monthly result
-
-
-    #YTD result
-
-
-
     # Get values from column "date"
     col_date = sheet.col_values(1)
     del col_date[col_date.index("date")] #Delete column heading
@@ -63,17 +51,33 @@ def results():
     col_hour = sheet.col_values(2)
     del col_hour[col_hour.index("hour")] #Delete column heading
 
-    #date=col_date
-    #hour=col_hour
-    #
-    #fig1, ax1 = plt.subplots()
-    #ax1.plot(date, hour)
-    #fig1.suptitle('Work Hour')
-    #plt.show()
+    c_year = 2018
+    c_month = 5
+
+    #Calculate - average hour_ytd
+    rows_year = [r for r in rows if str(r["yyyy"]) == str(c_year)]
+    rows_year_hr = [r["hour"] for r in rows_year]
+    total_hr_ytd = list_total(rows_year_hr)   
+    rows_year_w = [r for r in rows_year if dow_week(r["dayofweek"]) == True]
+    count_hr_ytd = len(rows_year_w)
+    avg_hr_ytd = total_hr_ytd/count_hr_ytd
+    
+    #Calculate - average hour_mtd
+    rows_year = [r for r in rows if str(r["yyyy"]) == str(c_year)]
+    rows_month = [r for r in rows_year if str(r["mm"]) == str(c_month)]
+    rows_month_hr = [r["hour"] for r in rows_month]
+    total_hr_mtd = list_total(rows_month_hr)   
+    rows_month_w = [r for r in rows_month if dow_week(r["dayofweek"]) == True]
+    count_hr_mtd = len(rows_month_w)
+    avg_hr_mtd = total_hr_mtd/count_hr_mtd
+
+#    print(avg_hr_ytd)
+#    print(avg_hr_mtd)
+
 
     return render_template("results.html",
-        results_date = col_date,
-        results_hour = col_hour
+        results_ytd = avg_hr_ytd,
+        results_mtd = avg_hr_mtd
     )
 
 ## TODO: Show Scatter Chart

@@ -6,10 +6,13 @@
 
 {% block content %}
   <h2>Time Tracker</h2>
-  <p>Your daily working hours are shown as below...</p>
+  <p>Result</p>
     
-  <li>{{ results_date }}</li>
-  <li>{{ results_hour }}</li>
+  <p>Your Average Working Hour This Year: </p>
+  <li>{{ results_ytd }}</li>
+
+  <p>Your Average Working Hour This Month: </p>
+  <li>{{ results_mtd }}</li>
 
   <!-- {% if rows %}
     <ul>
