@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block title %}
-  <title>Time Tracker | Example Web App</title>
+  <title>Results Page</title>
 {% endblock %}
 
 {% block content %}
@@ -9,6 +9,18 @@
     
   <p>Yearly Average Working Hour This Month: </p>
   <li>{{ mtd_hour }}</li>
+
+  <head>
+      <!-- Plotly.js -->
+      <script src="https://plot.ly/~kyokang1/2/#/"></script>
+    </head>
+    
+    <body>
+      
+      <div id="myDiv"><!-- Plotly chart will be drawn inside this DIV --></div>
+      <script>
+      </script>
+    </body>
 
   <p>Evaluation: </p>
   <li>{{ mtd_eval }}</li>
