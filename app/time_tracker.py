@@ -63,8 +63,11 @@ def day_of_week(d):
 def avg_hour(total_hr, count_wday):
     return total_hr/count_wday
 
-
-
+def dow_week (a):
+    if a in ["Mon", "Tue", "Wed", "Thu", "Fri"]:
+        return True
+    else:
+        return False
 
 def evaluate_hour(hr):
     if hr <= 8:
@@ -82,8 +85,27 @@ if __name__ == "__main__":
 
 #    print(list(rows))
     
+    #Define month_id
+    c_year = datetime.now().year
     c_month = datetime.now().month
-    print(c_month)
+    month_id = str(c_year) + str("_") + str(c_month)
+    
+    
+    #r = rows["date"]
+#    print(type(rows))
+#    print(rows)
+
+    c_year = 2018
+    c_month = 5
+    c_rows = [r for r in rows if str(r["yyyy"]) == str(c_year) and str(r["mm"]) == str(c_month)]
+
+    temp = "Mon"
+    print(dow_week(temp))
+
+
+#    c_month_hour = 
+#    print(c_rows)
+
 
 
 

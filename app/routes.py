@@ -43,8 +43,13 @@ def results():
     
     sheet, rows = get_records()
 
+    #Define month_id
+    c_year = datetime.now().year
+    c_month = datetime.now().month
+    month_id = str(c_year) + str("_") + str(c_month)
+    
     #Monthly result
-
+    
 
 
     #YTD result
