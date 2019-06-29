@@ -95,7 +95,6 @@ def avg_hour_mtd(c_year, c_month):
     avg_hr_mtd = total_hr_mtd/count_hr_mtd
     return avg_hr_mtd
 
-
 def evaluate_hour(hr):
     if hr <= 8:
         evaluation = "Safe"
@@ -117,12 +116,12 @@ if __name__ == "__main__":
 #    c_month = datetime.now().month
 #    month_id = str(c_year) + str("_") + str(c_month)
 #    print(c_year)
+    
+#    c_year = 2018
+#    c_month = 5
 
-    c_year = 2018
-    c_month = 5
-
-    print(avg_hour_ytd(c_year))
-    print(avg_hour_mtd(c_year, c_month))
+#    print(avg_hour_ytd(c_year))
+#    print(avg_hour_mtd(c_year, c_month))
 
 #    #Calculate - total hour
 #    rows_year = [r for r in rows if str(r["yyyy"]) == str(c_year)]
@@ -147,9 +146,6 @@ if __name__ == "__main__":
 #
 
 
-
-
-
     
 #    for a in rows_month_w:
 #        print(a)
@@ -166,6 +162,7 @@ if __name__ == "__main__":
 ## 2) Date should be in date format (DONE)
 ## 3) If the input date already existing, update the existing row (DONE)
 ## 4) Validate input (Pass, input box is "number")
+## 5) Validate input of hour < 24 (Done by set the max value 24)
 
 
 ## TODO - Calculation (as of Jun/28/2019)
