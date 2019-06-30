@@ -54,16 +54,18 @@ def results():
     eval_ytd = evaluate_hour(avg_hr_ytd)
     eval_mtd = evaluate_hour(avg_hr_mtd)
 
-    img_filepath = url_for('static', filename='fig1.png')
+
+#    img_filepath = url_for('static', filename='fig1.png')
 
     return render_template("results.html",
+        c_year = c_year,
+        c_month = c_month,
         ytd_avg_hour = avg_hr_ytd,
         ytd_hour = total_hr_ytd,
         ytd_eval = eval_ytd,
         mtd_avg_hour = avg_hr_mtd,
         mtd_hour = total_hr_mtd,
         mtd_eval = eval_mtd,
-        user_img = img_filepath
     )
 
 

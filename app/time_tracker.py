@@ -7,8 +7,6 @@ import statistics
 import plotly
 import plotly.plotly as py
 import plotly.graph_objs as go
-import plotly.io as pio
-import plotly.offline as offline
 
 from flask import Flask, Blueprint, request, render_template, jsonify, flash, redirect
 
@@ -21,6 +19,10 @@ from oauth2client.service_account import ServiceAccountCredentials
 load_dotenv()
 
 CREDENTIALS_FILEPATH = os.path.join(os.path.dirname(__file__), "..", "auth", "google_api_credentials.json")
+
+#TODO: APIKey sent to environment
+plotly.tools.set_credentials_file(username="kyokang1", api_key='DKCft9dRaKZMfuhb2zFY')
+
 
 scope = [
     "https://spreadsheets.google.com/feeds",
@@ -139,6 +141,35 @@ def evaluate_hour(hr):
         evaluation = "DANGER"
     return evaluation
 
+def chart_ytd_avg():
+    sheet, rows = get_records()
+
+    c_year = datetime.datetime.now().year
+    c_month = datetime.datetime.now().month   
+
+    year_span =[]
+    year_inc = 2009
+    while True:
+        year_span.append(year_inc)
+        if year_inc == c_year:
+            break
+        else:
+            year_inc = year_inc +1
+
+    avg_span = []
+    for i in year_span:
+        avg_hr_inc = avg_hour_ytd(i)
+        avg_span.append(avg_hr_inc)
+
+    data = [go.Bar(x= year_span, y= avg_span)]
+
+    fig = {
+        'data': data,
+    }
+
+    response = py.plot(fig, filename = 'chart_ytd_avg')
+    return response
+
 
 #def img_upload():
 #    upload_folder = os.path.join("..", "img")
@@ -155,26 +186,10 @@ def evaluate_hour(hr):
 if __name__ == "__main__":
     sheet, rows = get_records()
 
-    c_year = datetime.datetime.now().year
-    c_month = datetime.datetime.now().month   
-
-    year_span =[]
-    year_inc = 2009
-    while True:
-        year_span.append(year_inc)
-        if year_inc == c_year:
-            break
-        else:
-            year_inc = year_inc +1
-
-    historic_avg_hour = []
-    for i in year_span:
-        avg_hr_update = avg_hour_ytd(i)
-        historic_avg_hour.append(avg_hr_update)
+#    print(chart_ytd_avg)
 
 
-
-    breakpoint()
+#    breakpoint()
 
 
 

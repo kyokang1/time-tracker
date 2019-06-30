@@ -5,11 +5,11 @@
 {% endblock %}
 
 {% block content %}
-  <h2>Result - Month</h2>
+  <h2>Result - Month {{ c_year }}.{{ c_month }}</h2>
   <br>
 
   <p>Average Daily Work Hour: </p> 
-  <h3><a href="https://plot.ly/~kyokang1/0/#/" target="_blank">{{ mtd_avg_hour }}</a></h3>  
+  <h3><a href="https://plot.ly/~kyokang1/4/#/" target="_blank">{{ mtd_avg_hour }}</a></h3>  
   <p>Total Work Hour: </p> 
   <h3>{{ mtd_hour }} </h3>
   <p>Work-Life Balance Status: </p> 
@@ -17,7 +17,7 @@
   <br>
   <hr>
 
-  <h2>Result - Year</h2>
+  <h2>Result - Year {{ c_year }}</h2>
     
   <p>Average Daily Work Hour: </p> 
   <h3><a href="https://plot.ly/~kyokang1/0/#/" target="_blank">{{ ytd_avg_hour }}</a></h3>  
