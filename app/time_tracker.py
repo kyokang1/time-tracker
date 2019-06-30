@@ -562,7 +562,6 @@ if __name__ == "__main__":
 #    breakpoint()
 
 
-
 ## TODO (as of Jun/22/2019):
 ## 1) Insert a new row in the bottom (DONE)
 ## 2) Date should be in date format (DONE)
@@ -588,8 +587,3 @@ if __name__ == "__main__":
 ## 2) README.md update
 ## 3) prepare for the presentation 
 ## 4) planning documentation
-
-
-
-
-
