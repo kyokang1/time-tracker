@@ -20,6 +20,7 @@ import gspread
 from gspread.exceptions import SpreadsheetNotFound
 from oauth2client.service_account import ServiceAccountCredentials
 
+
 ##
 ## Credential & API Setup
 ##
@@ -46,10 +47,12 @@ PLOTLY_API_KEY = os.environ.get("plotly_api_key")
 
 plotly.tools.set_credentials_file(username=PLOTLY_USER_NAME, api_key=PLOTLY_API_KEY)
 
-#
-# Defined Functions
-#
 
+##
+## Define Functions
+##
+
+# google spreadsheet actions
 def get_records():
     rows = sheet.get_all_records()
     return sheet, rows
@@ -65,6 +68,7 @@ def create_records(a, b, c, d, e):
         response = sheet.append_row([a, float(b), c, int(d), int(e)])
     return response
 
+# formula to be used for calculation
 def day_of_week(d):
     yyyy, mm, dd = (int(d) for d in d.split('-'))
     dow_no = datetime.date(yyyy, mm, dd).weekday()
@@ -96,14 +100,13 @@ def list_total(rows):
         sum = sum + float(r)
     return sum
 
-#To-Be Used
 #def month_id():
 #    c_year = datetime.datetime.now().year
 #    c_month = datetime.datetime.now().month
 #    month_id = str(c_year) + str("_") + str(c_month)
 #    return month_id
 
-#Calculate - average hour_ytd
+# Calculate - average/total work hour - YTD
 def total_hour_ytd(i_year):
     sheet, rows = get_records()
     rows_year = [r for r in rows if int(r["yyyy"]) == int(i_year)]
@@ -121,7 +124,7 @@ def avg_hour_ytd(i_year):
     avg_hr_ytd = round(total_hr_ytd/count_hr_ytd,1)
     return avg_hr_ytd
     
-#Calculate - average hour_mtd
+# Calculate - average/total work hour - MTD
 def total_hour_mtd(i_year, i_month):
     sheet, rows = get_records()
     rows_year = [r for r in rows if int(r["yyyy"]) == int(i_year)]
@@ -141,25 +144,36 @@ def avg_hour_mtd(i_year, i_month):
     avg_hr_mtd = round(total_hr_mtd/count_hr_mtd,1)
     return avg_hr_mtd
 
+# Work-Life balance status evaluation
 def evaluate_hour(hr):
-    if hr <= 8:
+    threshold_watch = 8     #> user setup
+    threshold_warning = 9     #> user setup
+    threshold_danger = 10     #> user setup
+
+    if hr <= float(threshold_watch):
         evaluation = "SAFE"
-    elif hr > 8 and hr <= 9:
+    elif hr > float(threshold_watch) and hr <= float(threshold_warning):
         evaluation = "WATCH"
-    elif hr > 9 and hr <= 10:
+    elif hr > float(threshold_warning) and hr <= float(threshold_danger):
         evaluation = "WARNING"
     else:
         evaluation = "DANGER"
     return evaluation
 
+# Create plotly chart - ytd avg
 def chart_ytd_avg():
     sheet, rows = get_records()
 
     c_year = datetime.datetime.now().year
     c_month = datetime.datetime.now().month   
 
+    start_year = 2009     #> user setup
+    threshold_watch = 8     #> user setup
+    threshold_warning = 9     #> user setup
+    threshold_danger = 10     #> user setup
+
     year_span =[]
-    year_inc = 2009
+    year_inc = start_year
     while True:
         year_span.append(year_inc)
         if year_inc == c_year:
@@ -173,7 +187,7 @@ def chart_ytd_avg():
         avg_span.append(avg_hr_inc)
 
     colorlist =[]
-    year_inc = 2009
+    year_inc = start_year
     color_basic = 'rgba(204,204,204,1)'
     color_highlight = 'rgba(26, 118, 255, 1)'
     while True:
@@ -209,10 +223,10 @@ def chart_ytd_avg():
         'shapes': [
             {
             'type': 'line',
-            'x0': 2008,
-            'y0': 8,
-            'x1': 2020,
-            'y1': 8,
+            'x0': int(start_year-1),
+            'y0': threshold_watch,
+            'x1': int(c_year+1),
+            'y1': threshold_watch,
             'line':{
                 'color': 'green',
                 'width': 4,
@@ -221,10 +235,10 @@ def chart_ytd_avg():
             },
             {
             'type': 'line',
-            'x0': 2008,
-            'y0': 9,
-            'x1': 2020,
-            'y1': 9,
+            'x0': int(start_year-1),
+            'y0': threshold_warning,
+            'x1': int(c_year+1),
+            'y1': threshold_warning,
             'line':{
                 'color': 'yellow',
                 'width': 4,
@@ -233,10 +247,10 @@ def chart_ytd_avg():
             },
             {
             'type': 'line',
-            'x0': 2008,
-            'y0': 10,
-            'x1': 2020,
-            'y1': 10,
+            'x0': int(start_year-1),
+            'y0': threshold_danger,
+            'x1': int(c_year+1),
+            'y1': threshold_danger,
             'line':{
                 'color': 'red',
                 'width': 4,
@@ -254,12 +268,16 @@ def chart_ytd_avg():
     response = py.plot(fig, filename = 'chart_ytd_avg')
     return response
 
-
+# Create plotly chart - ytd total
 def chart_mtd_avg():
     sheet, rows = get_records()
 
     c_year = datetime.datetime.now().year
     c_month = datetime.datetime.now().month   
+
+    threshold_watch = 8     #> user setup
+    threshold_warning = 9     #> user setup
+    threshold_danger = 10     #> user setup
 
     month_span =[]
     month_inc = 1
@@ -313,9 +331,9 @@ def chart_mtd_avg():
             {
             'type': 'line',
             'x0': 0,
-            'y0': 8,
+            'y0': threshold_watch,
             'x1': 12,
-            'y1': 8,
+            'y1': threshold_watch,
             'line':{
                 'color': 'green',
                 'width': 4,
@@ -325,9 +343,9 @@ def chart_mtd_avg():
             {
             'type': 'line',
             'x0': 0,
-            'y0': 9,
+            'y0': threshold_warning,
             'x1': 12,
-            'y1': 9,
+            'y1': threshold_warning,
             'line':{
                 'color': 'yellow',
                 'width': 4,
@@ -337,9 +355,9 @@ def chart_mtd_avg():
             {
             'type': 'line',
             'x0': 0,
-            'y0': 10,
+            'y0': threshold_danger,
             'x1': 12,
-            'y1': 10,
+            'y1': threshold_danger,
             'line':{
                 'color': 'red',
                 'width': 4,
@@ -364,8 +382,17 @@ def chart_ytd_total():
     c_year = datetime.datetime.now().year
     c_month = datetime.datetime.now().month   
 
+    start_year = 2009     #> user setup
+    threshold_watch = 8     #> user setup
+    threshold_warning = 9     #> user setup
+    threshold_danger = 10     #> user setup
+
+    ytd_tot_benchmark1 = 1356  #> user setup: Good example - Germany 2017 (Source: OECD Statistics)
+    ytd_tot_benchmark2 = 1780  #> user setup: Mid example - US 2017 (Source: OECD Statistics)
+    ytd_tot_benchmark3 = 2024  #> user setup: Bad example - S.Korea 2017 (Source: OECD Statistics)
+
     year_span =[]
-    year_inc = 2009
+    year_inc = start_year
     while True:
         year_span.append(year_inc)
         if year_inc == c_year:
@@ -379,7 +406,7 @@ def chart_ytd_total():
         tot_span.append(tot_hr_inc)
 
     colorlist =[]
-    year_inc = 2009
+    year_inc = start_year
     color_basic = 'rgba(204,204,204,1)'
     color_highlight = 'rgba(26, 118, 255, 1)'
     while True:
@@ -415,10 +442,10 @@ def chart_ytd_total():
         'shapes': [
             {
             'type': 'line',
-            'x0': 2008,
-            'y0': 1356,
-            'x1': 2020,
-            'y1': 1356,
+            'x0': int(start_year-1),
+            'y0': ytd_tot_benchmark1,
+            'x1': int(c_year+1),
+            'y1': ytd_tot_benchmark1,
             'line':{
                 'color': 'green',
                 'width': 4,
@@ -427,10 +454,10 @@ def chart_ytd_total():
             },
             {
             'type': 'line',
-            'x0': 2008,
-            'y0': 1780,
-            'x1': 2020,
-            'y1': 1780,
+            'x0': int(start_year-1),
+            'y0': ytd_tot_benchmark2,
+            'x1': int(c_year+1),
+            'y1': ytd_tot_benchmark2,
             'line':{
                 'color': 'yellow',
                 'width': 4,
@@ -439,10 +466,10 @@ def chart_ytd_total():
             },
             {
             'type': 'line',
-            'x0': 2008,
-            'y0': 2024,
-            'x1': 2020,
-            'y1': 2024,
+            'x0': int(start_year-1),
+            'y0': ytd_tot_benchmark3,
+            'x1': int(c_year+1),
+            'y1': ytd_tot_benchmark3,
             'line':{
                 'color': 'red',
                 'width': 4,
