@@ -6,5 +6,4 @@ gspread
 oauth2client
 pylint
 plotly
-matplotlib
 psutil

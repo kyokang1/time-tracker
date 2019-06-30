@@ -45,6 +45,41 @@ def results():
     c_year = datetime.datetime.now().year
     c_month = datetime.datetime.now().month   
     
+#    year_span =[]
+#    year_inc = int(2009)
+#    while True:
+#        year_span.append(year_inc)
+#        if year_inc == c_year:
+#            break
+#        else:
+#            year_inc = year_inc +1
+#
+#    avg_ytd = []
+#    tot_ytd = []
+#    for i in year_span:
+#        avg_inc = avg_hour_ytd(int(i))
+#        tot_inc = total_hour_ytd(int(i))
+#        avg_ytd.append(avg_inc)
+#        tot_ytd.append(tot_inc)
+#
+#    month_span =[]
+#    month_inc = 1
+#    while True:
+#        month_span.append(month_inc)
+#        if month_inc == c_month:
+#            break
+#        else:
+#            month_inc = month_inc +1
+#
+#    avg_mtd = []
+#    tot_mtd = []
+#    for i in month_span:
+#        avg_inc = avg_hour_mtd(i)
+#        tot_inc = total_hour_mtd(i)
+#        avg_mtd.append(avg_inc)
+#        tot_mtd.append(tot_inc)
+#
+
     avg_hr_ytd = avg_hour_ytd(c_year)
     avg_hr_mtd = avg_hour_mtd(c_year, c_month)
 

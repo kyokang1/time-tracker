@@ -522,7 +522,7 @@ def chart_mtd_total():
 if __name__ == "__main__":
     sheet, rows = get_records()
 
-    chart_mtd_total()
+#    chart_mtd_total()
 
 
 #    breakpoint()
@@ -545,7 +545,14 @@ if __name__ == "__main__":
 ## 3) title & axis name (DONE)
 ## 4) 8 hour 9 hour 10 hour line (DONE)
 ## 5) Chart for MTD (DONE)
-## 6) Chart for Total Hours
+## 6) Chart for Total Hours (DONE)
+
+## TODO (as of Jun/30/2019)
+## 0) DEBUGGING the error not working with actual data
+## 1) .env & .gitignore update & plotly API separation
+## 2) README.md update
+## 3) prepare for the presentation 
+## 4) 
 
 
 
