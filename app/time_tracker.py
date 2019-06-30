@@ -177,7 +177,7 @@ def chart_ytd_avg():
         x= year_span,
         y= avg_span,
         text= avg_span,
-        textposition = 'middle center',
+        textposition = 'outside',
         marker= dict(color=colorlist)
         )
     ]
@@ -280,7 +280,7 @@ def chart_mtd_avg():
         x= month_span,
         y= avg_span,
         text= avg_span,
-        textposition = 'middle center',
+        textposition = 'outside',
         marker= dict(color=colorlist)
         )
     ]
@@ -383,7 +383,7 @@ def chart_ytd_total():
         x= year_span,
         y= tot_span,
         text= tot_span,
-        textposition = 'middle center',
+        textposition = 'outside',
         marker= dict(color=colorlist)
         )
     ]
@@ -486,7 +486,7 @@ def chart_mtd_total():
         x= month_span,
         y= tot_span,
         text= tot_span,
-        textposition = 'auto',
+        textposition = 'outside',
         marker= dict(color=colorlist)
         )
     ]
