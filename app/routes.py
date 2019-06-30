@@ -1,3 +1,6 @@
+#
+# Module & Package Import
+#
 from flask import Flask, Blueprint, request, render_template, jsonify, flash, redirect, url_for
 import datetime
 import os
@@ -55,10 +58,10 @@ def results():
     eval_mtd = evaluate_hour(avg_hr_mtd)
 
 #TODO: FIND OUT TO RUN IN THE BACKGROUND
-#    chart_mtd_avg()
-#    chart_mtd_total()
-#    chart_ytd_avg()
-#    chart_ytd_total()
+    chart_mtd_avg()
+    chart_mtd_total()
+    chart_ytd_avg()
+    chart_ytd_total()
 
     return render_template("results.html",
         c_year = c_year,
@@ -70,29 +73,3 @@ def results():
         mtd_hour = total_hr_mtd,
         mtd_eval = eval_mtd,
     )
-
-
-#    sheet, rows = get_records()
-#
-#    # Get values from column "date"
-#    col_date = sheet.col_values(1)
-#    del col_date[col_date.index("date")] #Delete column heading
-#
-#    # Get values from column "hour"
-#    col_hour = sheet.col_values(2)
-#    del col_hour[col_hour.index("hour")] #Delete column heading
-
-
-## TODO: Show Scatter Chart
-
-
-
-
-
-
-
-
-
-
-
-

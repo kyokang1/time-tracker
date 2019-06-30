@@ -268,7 +268,7 @@ def chart_ytd_avg():
     response = py.plot(fig, filename = 'chart_ytd_avg')
     return response
 
-# Create plotly chart - ytd total
+# Create plotly chart - mtd average
 def chart_mtd_avg():
     sheet, rows = get_records()
 
@@ -375,7 +375,7 @@ def chart_mtd_avg():
     response = py.plot(fig, filename = 'chart_mtd_avg')
     return response
 
-
+# Create plotly chart - ytd total
 def chart_ytd_total():
     sheet, rows = get_records()
 
@@ -487,7 +487,7 @@ def chart_ytd_total():
     response = py.plot(fig, filename = 'chart_ytd_total')
     return response
 
-
+# Create plotly chart - mtd total
 def chart_mtd_total():
     sheet, rows = get_records()
 
@@ -553,14 +553,14 @@ def chart_mtd_total():
     return response
 
 
-#
-# Maim Script
-#
+##
+## Maim Script
+##
 
 if __name__ == "__main__":
     sheet, rows = get_records()
-
 #    breakpoint()
+
 
 
 ## TODO (as of Jun/22/2019):
@@ -570,11 +570,11 @@ if __name__ == "__main__":
 ## 4) Validate input (Pass, input box is "number")
 ## 5) Validate input of hour < 24 (Done by set the max value 24)
 
-## TODO - Calculation (as of Jun/28/2019)
+## TODO Calculation (as of Jun/28/2019)
 ## 1) create yyyy, mm, dd when parsing inputs (DONE)
 ## 2) calculate by yyyy, and mm (DONE)
 
-## TODO (as of Jun/29/2019): (DONE)
+## TODO (as of Jun/29/2019):
 ## 1) value display (DONE)
 ## 2) highlight the last column (DONE)
 ## 3) title & axis name (DONE)
@@ -584,10 +584,10 @@ if __name__ == "__main__":
 
 ## TODO (as of Jun/30/2019)
 ## 0) DEBUGGING the error not working with actual data (Done)
-## 1) .env & .gitignore update & plotly API separation
+## 1) .env & .gitignore update & plotly API separation (Done)
 ## 2) README.md update
 ## 3) prepare for the presentation 
-## 4) 
+## 4) planning documentation
 
 
 
