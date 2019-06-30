@@ -161,7 +161,6 @@ def chart_ytd_avg():
         avg_hr_inc = avg_hour_ytd(i)
         avg_span.append(avg_hr_inc)
 
-
     colorlist =[]
     year_inc = 2009
     color_basic = 'rgba(204,204,204,1)'
@@ -185,7 +184,7 @@ def chart_ytd_avg():
     
     layout = {
         'title': {
-            'text':'Year-To-Date Average Work Hour',
+            'text':'Yearly Average Work Hour',
             'xref': 'paper',
             'x': 0,
         },
@@ -193,7 +192,7 @@ def chart_ytd_avg():
             'title': 'Year',
         },
         'yaxis': {
-            'title': 'Daily Work Hour',
+                'title': 'Daily Work Hour',
             'autorange': True,
         },
         'shapes': [
@@ -236,61 +235,284 @@ def chart_ytd_avg():
         ]
     }
 
+    fig = {
+        'data': data,
+        'layout': layout,
+    }
 
-    #layout = go.Layout(
-    #    title=go.layout.Title(
-    #        text='Yearly Average Work Hour',
-    #        xref='paper',
-    #        x=0
-    #    ),
-    #    xaxis=go.layout.XAxis(
-    #        title=go.layout.xaxis.Title(
-    #            text='Year'
-    #        ),
-    #    ),
-    #    yaxis=go.layout.YAxis(
-    #        title=go.layout.yaxis.Title(
-    #            text='Daily Avg. Work Hour',
-    #        )
-    #    ),
-    #    shapes=go.layout.update(dict(shapes = [{
-    #            'type': 'line',
-    #            'x0': 2009,
-    #            'y0': 8,
-    #            'x1': 2019,
-    #            'y1': 8,
-    #            'line':{
-    #                'color': 'rgb(50, 171, 96)',
-    #                'width': 4,
-    #                'dash': 'dashdot'
-    #            },
-    #        }]
-    #    ))
-    #)
+    response = py.plot(fig, filename = 'chart_ytd_avg')
+    return response
+
+
+def chart_mtd_avg():
+    sheet, rows = get_records()
+
+    c_year = datetime.datetime.now().year
+    c_month = datetime.datetime.now().month   
+
+    month_span =[]
+    month_inc = 1
+    while True:
+        month_span.append(month_inc)
+        if month_inc == c_month:
+            break
+        else:
+            month_inc = month_inc +1
+
+    avg_span = []
+    for i in month_span:
+        avg_hr_inc = avg_hour_mtd(c_year, i)
+        avg_span.append(avg_hr_inc)
+
+    colorlist =[]
+    month_inc = 1
+    color_basic = 'rgba(204,204,204,1)'
+    color_highlight = 'rgba(26, 118, 255, 1)'
+    while True:
+        if month_inc == c_month:
+            colorlist.append(color_highlight)
+            break
+        else:
+            colorlist.append(color_basic)
+            month_inc = month_inc +1
+
+    data = [go.Bar(
+        x= month_span,
+        y= avg_span,
+        text= avg_span,
+        textposition = 'auto',
+        marker= dict(color=colorlist)
+        )
+    ]
+    
+    layout = {
+        'title': {
+            'text':str(c_year) + ' Monthly Average Work Hour',
+            'xref': 'paper',
+            'x': 0,
+        },
+        'xaxis': {
+            'title': str(c_year) + ' Months',
+        },
+        'yaxis': {
+                'title': 'Daily Work Hour',
+            'autorange': True,
+        },
+        'shapes': [
+            {
+            'type': 'line',
+            'x0': 0,
+            'y0': 8,
+            'x1': 12,
+            'y1': 8,
+            'line':{
+                'color': 'green',
+                'width': 4,
+                'dash': 'dashdot'
+                },
+            },
+            {
+            'type': 'line',
+            'x0': 0,
+            'y0': 9,
+            'x1': 12,
+            'y1': 9,
+            'line':{
+                'color': 'yellow',
+                'width': 4,
+                'dash': 'dashdot'
+                },
+            },
+            {
+            'type': 'line',
+            'x0': 0,
+            'y0': 10,
+            'x1': 12,
+            'y1': 10,
+            'line':{
+                'color': 'red',
+                'width': 4,
+                'dash': 'dashdot'
+                },
+            }
+        ]
+    }
 
     fig = {
         'data': data,
         'layout': layout,
     }
 
-    #fig = go.Figure(data=data, layout=layout)
-
-    response = py.plot(fig, filename = 'chart_ytd_avg')
+    response = py.plot(fig, filename = 'chart_mtd_avg')
     return response
 
-## TODO (as of Jun/22/2019): (DONE)
-## 1) value display (DONE)
-## 2) highlight the last column (DONE)
-## 3) title & axis name (DONE)
-## 4) 8 hour 9 hour 10 hour line
+
+def chart_ytd_total():
+    sheet, rows = get_records()
+
+    c_year = datetime.datetime.now().year
+    c_month = datetime.datetime.now().month   
+
+    year_span =[]
+    year_inc = 2009
+    while True:
+        year_span.append(year_inc)
+        if year_inc == c_year:
+            break
+        else:
+            year_inc = year_inc +1
+
+    tot_span = []
+    for i in year_span:
+        tot_hr_inc = total_hour_ytd(i)
+        tot_span.append(tot_hr_inc)
+
+    colorlist =[]
+    year_inc = 2009
+    color_basic = 'rgba(204,204,204,1)'
+    color_highlight = 'rgba(26, 118, 255, 1)'
+    while True:
+        if year_inc == c_year:
+            colorlist.append(color_highlight)
+            break
+        else:
+            colorlist.append(color_basic)
+            year_inc = year_inc +1
+
+    data = [go.Bar(
+        x= year_span,
+        y= tot_span,
+        text= tot_span,
+        textposition = 'auto',
+        marker= dict(color=colorlist)
+        )
+    ]
+    
+    layout = {
+        'title': {
+            'text':'Yearly Total Work Hour',
+            'xref': 'paper',
+            'x': 0,
+        },
+        'xaxis': {
+            'title': 'Year',
+        },
+        'yaxis': {
+                'title': 'Total Work Hour',
+            'autorange': True,
+        },
+        'shapes': [
+            {
+            'type': 'line',
+            'x0': 2008,
+            'y0': 1356,
+            'x1': 2020,
+            'y1': 1356,
+            'line':{
+                'color': 'green',
+                'width': 4,
+                'dash': 'dashdot'
+                },
+            },
+            {
+            'type': 'line',
+            'x0': 2008,
+            'y0': 1780,
+            'x1': 2020,
+            'y1': 1780,
+            'line':{
+                'color': 'yellow',
+                'width': 4,
+                'dash': 'dashdot'
+                },
+            },
+            {
+            'type': 'line',
+            'x0': 2008,
+            'y0': 2024,
+            'x1': 2020,
+            'y1': 2024,
+            'line':{
+                'color': 'red',
+                'width': 4,
+                'dash': 'dashdot'
+                },
+            }
+        ]
+    }
+
+    fig = {
+        'data': data,
+        'layout': layout,
+    }
+
+    response = py.plot(fig, filename = 'chart_ytd_total')
+    return response
 
 
-#def img_upload():
-#    upload_folder = os.path.join("..", "img")
-#    app = Flask(__name__)
-#    app.config['UPLOAD_FOLDER'] = upload_folder
-#    img_filepath = os.path.join(app.config['UPLOAD_FOLDER'], 'fig1.png')
-#    img_filepath = os.path.join(os.path.dirname(__file__), "..", "img","fig1.png")
+def chart_mtd_total():
+    sheet, rows = get_records()
+
+    c_year = datetime.datetime.now().year
+    c_month = datetime.datetime.now().month   
+
+    month_span =[]
+    month_inc = 1
+    while True:
+        month_span.append(month_inc)
+        if month_inc == c_month:
+            break
+        else:
+            month_inc = month_inc +1
+
+    tot_span = []
+    for i in month_span:
+        tot_hr_inc = total_hour_mtd(c_year, i)
+        tot_span.append(tot_hr_inc)
+
+    colorlist =[]
+    month_inc = 1
+    color_basic = 'rgba(204,204,204,1)'
+    color_highlight = 'rgba(26, 118, 255, 1)'
+    while True:
+        if month_inc == c_month:
+            colorlist.append(color_highlight)
+            break
+        else:
+            colorlist.append(color_basic)
+            month_inc = month_inc +1
+
+    data = [go.Bar(
+        x= month_span,
+        y= tot_span,
+        text= tot_span,
+        textposition = 'auto',
+        marker= dict(color=colorlist)
+        )
+    ]
+    
+    layout = {
+        'title': {
+            'text':str(c_year) + ' Monthly Total Work Hour',
+            'xref': 'paper',
+            'x': 0,
+        },
+        'xaxis': {
+            'title': str(c_year) + ' Months',
+        },
+        'yaxis': {
+                'title': 'Total Work Hour',
+            'autorange': True,
+        }
+    }
+
+    fig = {
+        'data': data,
+        'layout': layout,
+    }
+
+    response = py.plot(fig, filename = 'chart_mtd_total')
+    return response
 
 
 #
@@ -300,41 +522,32 @@ def chart_ytd_avg():
 if __name__ == "__main__":
     sheet, rows = get_records()
 
-    chart_ytd_avg()
+    chart_mtd_total()
 
 
 #    breakpoint()
 
 
-
-#    print(avg_hr_ytd)
-#    print(avg_hr_mtd)
-#    print(eval_ytd)
-#    print(eval_mtd)
-
-
-    
-#    for a in rows_month_w:
-#        print(a)
-
-
-
-#   breakpoint()
-
-
-
-
-## TODO (as of Jun/22/2019): (DONE)
+## TODO (as of Jun/22/2019):
 ## 1) Insert a new row in the bottom (DONE)
 ## 2) Date should be in date format (DONE)
 ## 3) If the input date already existing, update the existing row (DONE)
 ## 4) Validate input (Pass, input box is "number")
 ## 5) Validate input of hour < 24 (Done by set the max value 24)
 
-
 ## TODO - Calculation (as of Jun/28/2019)
 ## 1) create yyyy, mm, dd when parsing inputs (DONE)
 ## 2) calculate by yyyy, and mm (DONE)
+
+## TODO (as of Jun/29/2019): (DONE)
+## 1) value display (DONE)
+## 2) highlight the last column (DONE)
+## 3) title & axis name (DONE)
+## 4) 8 hour 9 hour 10 hour line (DONE)
+## 5) Chart for MTD (DONE)
+## 6) Chart for Total Hours
+
+
 
 
 

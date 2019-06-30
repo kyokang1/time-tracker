@@ -54,6 +54,13 @@ def results():
     eval_ytd = evaluate_hour(avg_hr_ytd)
     eval_mtd = evaluate_hour(avg_hr_mtd)
 
+#TODO: FIND OUT TO RUN IN THE BACKGROUND
+    chart_ytd_avg()
+    chart_mtd_avg()
+    chart_ytd_total()
+    chart_mtd_total()
+    
+
 
 #    img_filepath = url_for('static', filename='fig1.png')
 
