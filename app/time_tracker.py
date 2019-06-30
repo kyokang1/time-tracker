@@ -82,30 +82,30 @@ def dow_week (a):
 def list_total(rows):
     sum = 0
     for r in rows:
-        sum = sum + r
+        sum = sum + float(r)
     return sum
 
 #To-Be Used
-def month_id():
-    c_year = datetime.datetime.now().year
-    c_month = datetime.datetime.now().month
-    month_id = str(c_year) + str("_") + str(c_month)
-    return month_id
+#def month_id():
+#    c_year = datetime.datetime.now().year
+#    c_month = datetime.datetime.now().month
+#    month_id = str(c_year) + str("_") + str(c_month)
+#    return month_id
 
 #Calculate - average hour_ytd
 def total_hour_ytd(i_year):
     sheet, rows = get_records()
-    rows_year = [r for r in rows if str(r["yyyy"]) == str(i_year)]
+    rows_year = [r for r in rows if int(r["yyyy"]) == int(i_year)]
     rows_year_hr = [r["hour"] for r in rows_year]
     total_hr_ytd = round(list_total(rows_year_hr),1)
     return total_hr_ytd
 
 def avg_hour_ytd(i_year):
     sheet, rows = get_records()
-    rows_year = [r for r in rows if str(r["yyyy"]) == str(i_year)]
+    rows_year = [r for r in rows if int(r["yyyy"]) == int(i_year)]
     rows_year_hr = [r["hour"] for r in rows_year]
     total_hr_ytd = list_total(rows_year_hr)   
-    rows_year_w = [r for r in rows_year if dow_week(r["dayofweek"]) == True]
+    rows_year_w = [r for r in rows_year if dow_week(r["dayofweek"]) == True and r["hour"] != 0]
     count_hr_ytd = len(rows_year_w)
     avg_hr_ytd = round(total_hr_ytd/count_hr_ytd,1)
     return avg_hr_ytd
@@ -113,19 +113,19 @@ def avg_hour_ytd(i_year):
 #Calculate - average hour_mtd
 def total_hour_mtd(i_year, i_month):
     sheet, rows = get_records()
-    rows_year = [r for r in rows if str(r["yyyy"]) == str(i_year)]
-    rows_month = [r for r in rows_year if str(r["mm"]) == str(i_month)]
+    rows_year = [r for r in rows if int(r["yyyy"]) == int(i_year)]
+    rows_month = [r for r in rows_year if int(r["mm"]) == int(i_month)]
     rows_month_hr = [r["hour"] for r in rows_month]
     total_hr_mtd = round(list_total(rows_month_hr),1)
     return total_hr_mtd
 
 def avg_hour_mtd(i_year, i_month):
     sheet, rows = get_records()
-    rows_year = [r for r in rows if str(r["yyyy"]) == str(i_year)]
-    rows_month = [r for r in rows_year if str(r["mm"]) == str(i_month)]
+    rows_year = [r for r in rows if int(r["yyyy"]) == int(i_year)]
+    rows_month = [r for r in rows_year if int(r["mm"]) == int(i_month)]
     rows_month_hr = [r["hour"] for r in rows_month]
     total_hr_mtd = list_total(rows_month_hr)   
-    rows_month_w = [r for r in rows_month if dow_week(r["dayofweek"]) == True]
+    rows_month_w = [r for r in rows_month if dow_week(r["dayofweek"]) == True and r["hour"] != 0]
     count_hr_mtd = len(rows_month_w)
     avg_hr_mtd = round(total_hr_mtd/count_hr_mtd,1)
     return avg_hr_mtd
@@ -177,7 +177,7 @@ def chart_ytd_avg():
         x= year_span,
         y= avg_span,
         text= avg_span,
-        textposition = 'auto',
+        textposition = 'middle center',
         marker= dict(color=colorlist)
         )
     ]
@@ -280,7 +280,7 @@ def chart_mtd_avg():
         x= month_span,
         y= avg_span,
         text= avg_span,
-        textposition = 'auto',
+        textposition = 'middle center',
         marker= dict(color=colorlist)
         )
     ]
@@ -383,7 +383,7 @@ def chart_ytd_total():
         x= year_span,
         y= tot_span,
         text= tot_span,
-        textposition = 'auto',
+        textposition = 'middle center',
         marker= dict(color=colorlist)
         )
     ]
@@ -522,9 +522,6 @@ def chart_mtd_total():
 if __name__ == "__main__":
     sheet, rows = get_records()
 
-#    chart_mtd_total()
-
-
 #    breakpoint()
 
 
@@ -548,7 +545,7 @@ if __name__ == "__main__":
 ## 6) Chart for Total Hours (DONE)
 
 ## TODO (as of Jun/30/2019)
-## 0) DEBUGGING the error not working with actual data
+## 0) DEBUGGING the error not working with actual data (Done)
 ## 1) .env & .gitignore update & plotly API separation
 ## 2) README.md update
 ## 3) prepare for the presentation 
