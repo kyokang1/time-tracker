@@ -1,4 +1,8 @@
 
+##
+## Module & Package Import
+##
+
 import json
 import os
 import datetime
@@ -16,13 +20,14 @@ import gspread
 from gspread.exceptions import SpreadsheetNotFound
 from oauth2client.service_account import ServiceAccountCredentials
 
+##
+## Credential & API Setup
+##
+
 load_dotenv()
 
+# Google spreadsheet credentials setup
 CREDENTIALS_FILEPATH = os.path.join(os.path.dirname(__file__), "..", "auth", "google_api_credentials.json")
-
-#TODO: APIKey sent to environment
-plotly.tools.set_credentials_file(username="kyokang1", api_key='DKCft9dRaKZMfuhb2zFY')
-
 
 scope = [
     "https://spreadsheets.google.com/feeds",
@@ -34,6 +39,12 @@ scope = [
 credentials = ServiceAccountCredentials.from_json_keyfile_name(CREDENTIALS_FILEPATH, scope)
 client = gspread.authorize(credentials)
 sheet = client.open("timetracker").sheet1
+
+# plotly credential setup
+PLOTLY_USER_NAME = os.environ.get("plotly_user_name")
+PLOTLY_API_KEY = os.environ.get("plotly_api_key")
+
+plotly.tools.set_credentials_file(username=PLOTLY_USER_NAME, api_key=PLOTLY_API_KEY)
 
 #
 # Defined Functions

@@ -1,8 +1,14 @@
+# .gitignore for the app
 
+# Purpose:
+# Listed file files or directories listed in this .gitignore file will not be committed to Github.
+# This is to make private informations such as credential APIs to be excluded from version control.
 
-# Environments
+# List of Exclusion:
+
+## Environments
 .env
 
-#Google API Credential
+## Google API Credential
 auth/
 

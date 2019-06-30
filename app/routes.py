@@ -55,10 +55,10 @@ def results():
     eval_mtd = evaluate_hour(avg_hr_mtd)
 
 #TODO: FIND OUT TO RUN IN THE BACKGROUND
-    chart_ytd_avg()
-    chart_mtd_avg()
-    chart_ytd_total()
-    chart_mtd_total()
+#    chart_ytd_avg()
+#    chart_mtd_avg()
+#    chart_ytd_total()
+#    chart_mtd_total()
 
     return render_template("results.html",
         c_year = c_year,
