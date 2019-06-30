@@ -559,6 +559,9 @@ def chart_mtd_total():
 
 if __name__ == "__main__":
     sheet, rows = get_records()
+    
+
+
 #    breakpoint()
 
 
@@ -585,5 +588,6 @@ if __name__ == "__main__":
 ## 0) DEBUGGING the error not working with actual data (Done)
 ## 1) .env & .gitignore update & plotly API separation (Done)
 ## 2) README.md update
-## 3) prepare for the presentation 
-## 4) planning documentation
+## 3) Prepare for the presentation 
+## 4) Prepare planning documentation
+## 5) Implement pytest (Done)

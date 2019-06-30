@@ -7,3 +7,5 @@ oauth2client
 pylint
 plotly
 psutil
+pytest
+requests
