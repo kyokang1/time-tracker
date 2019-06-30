@@ -165,7 +165,7 @@ def chart_ytd_avg():
     colorlist =[]
     year_inc = 2009
     color_basic = 'rgba(204,204,204,1)'
-    color_highlight = 'rgb(26, 118, 255)'
+    color_highlight = 'rgba(26, 118, 255, 1)'
     while True:
         if year_inc == c_year:
             colorlist.append(color_highlight)
@@ -182,25 +182,98 @@ def chart_ytd_avg():
         marker= dict(color=colorlist)
         )
     ]
+    
+    layout = {
+        'title': {
+            'text':'Year-To-Date Average Work Hour',
+            'xref': 'paper',
+            'x': 0,
+        },
+        'xaxis': {
+            'title': 'Year',
+        },
+        'yaxis': {
+            'title': 'Daily Work Hour',
+            'autorange': True,
+        },
+        'shapes': [
+            {
+            'type': 'line',
+            'x0': 2008,
+            'y0': 8,
+            'x1': 2020,
+            'y1': 8,
+            'line':{
+                'color': 'green',
+                'width': 4,
+                'dash': 'dashdot'
+                },
+            },
+            {
+            'type': 'line',
+            'x0': 2008,
+            'y0': 9,
+            'x1': 2020,
+            'y1': 9,
+            'line':{
+                'color': 'yellow',
+                'width': 4,
+                'dash': 'dashdot'
+                },
+            },
+            {
+            'type': 'line',
+            'x0': 2008,
+            'y0': 10,
+            'x1': 2020,
+            'y1': 10,
+            'line':{
+                'color': 'red',
+                'width': 4,
+                'dash': 'dashdot'
+                },
+            }
+        ]
+    }
 
-    layout = go.Layout(
-        title=go.layout.Title(
-            text='Yearly Average Work Hour',
-            xref='paper',
-            x=0
-        ),
-        xaxis=go.layout.XAxis(
-            title=go.layout.xaxis.Title(
-                text='Year'
-                ),
-            ),
-        yaxis=go.layout.YAxis(
-            title=go.layout.yaxis.Title(
-                text='Daily Avg. Work Hour',
-                )
-            )
-    )
-    fig = go.Figure(data=data, layout=layout)
+
+    #layout = go.Layout(
+    #    title=go.layout.Title(
+    #        text='Yearly Average Work Hour',
+    #        xref='paper',
+    #        x=0
+    #    ),
+    #    xaxis=go.layout.XAxis(
+    #        title=go.layout.xaxis.Title(
+    #            text='Year'
+    #        ),
+    #    ),
+    #    yaxis=go.layout.YAxis(
+    #        title=go.layout.yaxis.Title(
+    #            text='Daily Avg. Work Hour',
+    #        )
+    #    ),
+    #    shapes=go.layout.update(dict(shapes = [{
+    #            'type': 'line',
+    #            'x0': 2009,
+    #            'y0': 8,
+    #            'x1': 2019,
+    #            'y1': 8,
+    #            'line':{
+    #                'color': 'rgb(50, 171, 96)',
+    #                'width': 4,
+    #                'dash': 'dashdot'
+    #            },
+    #        }]
+    #    ))
+    #)
+
+    fig = {
+        'data': data,
+        'layout': layout,
+    }
+
+    #fig = go.Figure(data=data, layout=layout)
 
     response = py.plot(fig, filename = 'chart_ytd_avg')
     return response
@@ -230,7 +303,7 @@ if __name__ == "__main__":
     chart_ytd_avg()
 
 
-    breakpoint()
+#    breakpoint()
 
 
 
