@@ -161,10 +161,11 @@ def chart_ytd_avg():
         avg_hr_inc = avg_hour_ytd(i)
         avg_span.append(avg_hr_inc)
 
+
     colorlist =[]
     year_inc = 2009
     color_basic = 'rgba(204,204,204,1)'
-    color_highlight = 'rgba(222,45,38,0.8)'
+    color_highlight = 'rgb(26, 118, 255)'
     while True:
         if year_inc == c_year:
             colorlist.append(color_highlight)
@@ -192,7 +193,6 @@ def chart_ytd_avg():
             title=go.layout.xaxis.Title(
                 text='Year'
                 ),
-            showexponent='all'
             ),
         yaxis=go.layout.YAxis(
             title=go.layout.yaxis.Title(
