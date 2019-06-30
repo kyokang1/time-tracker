@@ -161,11 +161,32 @@ def chart_ytd_avg():
         avg_hr_inc = avg_hour_ytd(i)
         avg_span.append(avg_hr_inc)
 
-    data = [go.Bar(x= year_span, y= avg_span)]
+    data = [go.Bar(
+        x= year_span,
+        y= avg_span,
+        text= avg_span,
+        textposition = 'auto'
+        )
+    ]
 
-    fig = {
-        'data': data,
-    }
+    layout = go.Layout(
+        title=go.layout.Title(
+            text='Yearly Average Work Hour',
+            xref='paper',
+            x=0
+        ),
+        xaxis=go.layout.XAxis(
+            title=go.layout.xaxis.Title(
+                text='Year'
+                )
+            ),
+        yaxis=go.layout.YAxis(
+            title=go.layout.yaxis.Title(
+                text='Daily Avg. Work Hour',
+                )
+            )
+    )
+    fig = go.Figure(data=data, layout=layout)
 
     response = py.plot(fig, filename = 'chart_ytd_avg')
     return response
@@ -186,7 +207,7 @@ def chart_ytd_avg():
 if __name__ == "__main__":
     sheet, rows = get_records()
 
-#    print(chart_ytd_avg)
+    chart_ytd_avg()
 
 
 #    breakpoint()
