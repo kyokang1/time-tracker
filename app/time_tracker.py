@@ -161,11 +161,24 @@ def chart_ytd_avg():
         avg_hr_inc = avg_hour_ytd(i)
         avg_span.append(avg_hr_inc)
 
+    colorlist =[]
+    year_inc = 2009
+    color_basic = 'rgba(204,204,204,1)'
+    color_highlight = 'rgba(222,45,38,0.8)'
+    while True:
+        if year_inc == c_year:
+            colorlist.append(color_highlight)
+            break
+        else:
+            colorlist.append(color_basic)
+            year_inc = year_inc +1
+
     data = [go.Bar(
         x= year_span,
         y= avg_span,
         text= avg_span,
-        textposition = 'auto'
+        textposition = 'auto',
+        marker= dict(color=colorlist)
         )
     ]
 
@@ -178,7 +191,8 @@ def chart_ytd_avg():
         xaxis=go.layout.XAxis(
             title=go.layout.xaxis.Title(
                 text='Year'
-                )
+                ),
+            showexponent='all'
             ),
         yaxis=go.layout.YAxis(
             title=go.layout.yaxis.Title(
@@ -190,6 +204,12 @@ def chart_ytd_avg():
 
     response = py.plot(fig, filename = 'chart_ytd_avg')
     return response
+
+## TODO (as of Jun/22/2019): (DONE)
+## 1) value display (DONE)
+## 2) highlight the last column (DONE)
+## 3) title & axis name (DONE)
+## 4) 8 hour 9 hour 10 hour line
 
 
 #def img_upload():
@@ -210,7 +230,7 @@ if __name__ == "__main__":
     chart_ytd_avg()
 
 
-#    breakpoint()
+    breakpoint()
 
 
 
@@ -240,8 +260,8 @@ if __name__ == "__main__":
 
 
 ## TODO - Calculation (as of Jun/28/2019)
-## 1) create yyyy, mm, dd when parsing inputs
-## 2) calculate by yyyy, and mm
+## 1) create yyyy, mm, dd when parsing inputs (DONE)
+## 2) calculate by yyyy, and mm (DONE)
 
 
 
