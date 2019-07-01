@@ -2,7 +2,7 @@
 
 import os
 
-from app.time_tracker import get_records, day_of_week, dow_week, list_total
+from app.time_tracker import get_records, day_of_week, dow_week, list_total, total_hour_ytd, avg_hour_ytd
 
 def test_get_records():
     sheet, rows = get_records()
@@ -22,6 +22,16 @@ def test_dow_week():
 def test_list_total():
     test_list = [1,2,3,4,5,6,7,8,9,10]
     assert list_total(test_list) == 55
+
+def test_total_hour_ytd():
+    assert total_hour_ytd(2010) == 2233
+    assert total_hour_ytd(2016) == 2265.5
+    assert total_hour_ytd(2018) == 2145.5
+
+def test_avg_hour_ytd():
+    assert avg_hour_ytd(2009) == 9.2
+    assert avg_hour_ytd(2014) == 8.5
+    assert avg_hour_ytd(2017) == 9.6
 
 
 # DEVELOPER's NOTE:
