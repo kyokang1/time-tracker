@@ -33,9 +33,9 @@ def test_avg_hour_ytd():
     assert avg_hour_ytd(2014) == 8.5
     assert avg_hour_ytd(2017) == 9.6
 
+
 # DEVELOPER's NOTE:
 # Validation on the work hour and date is not required since the inputs are secured in html.
 # For example, input of date is secured as date since html defines the input box of "date".
 # And working hour is secured as the type of "number" and minimum/maximum values are defined.
 # For detail, see the source code of "start.html"
-
