@@ -59,10 +59,10 @@ def results():
 
 #TODO: FIND OUT TO RUN IN THE BACKGROUND (PASS)
 #TODO: Unnote below lines before demonstration on Jul/1/2019
-    chart_mtd_avg()
-    chart_mtd_total()
-    chart_ytd_avg()
-    chart_ytd_total()
+#    chart_mtd_avg()
+#    chart_mtd_total()
+#    chart_ytd_avg()
+#    chart_ytd_total()
 
     return render_template("results.html",
         c_year = c_year,
