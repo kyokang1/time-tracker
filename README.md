@@ -162,7 +162,6 @@ Based on the daily average work hours, The Keeper will evaluates the Work-Life B
 
 > NOTE: you can also change the benchmark in the code.
 
-
 ## 5. [License](LICENSE)
 
 
