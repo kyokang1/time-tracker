@@ -10,9 +10,9 @@ Welcome to `"Work-Life Balance Keeper"` (the WLB Keeper or the Keeper) developed
 ### Prerequisites
 
 It is recommended to set up a virtual environment to ensure Python runs under the following prerequisites:
-    + Anaconda 3.7
-    + Python 3.7
-    + Pip
+  + Anaconda 3.7
+  + Python 3.7
+  + Pip
 
 
 ### Installation
@@ -132,13 +132,15 @@ The designed tests are as follows:
 test_get_records
 -> Test to ensure the function returns the the data from Google spreadsheet. 
 
-test_day_of_week & test_dow_week
+test_day_of_week
+ttest_dow_week
 -> Test to ensure the function identifies days of week and distinguishes weekdays and weekends.
 
 test_list_total
 -> Test the function to sum the values in the list.
 
-test_total_hour_ytd & test_avg_hour_ytd
+test_total_hour_ytd
+test_avg_hour_ytd
 -> Test the key functions to calculate the total and average of hours.
 ```
 
@@ -164,7 +166,7 @@ Based on the daily average work hours, The Keeper will evaluates the Work-Life B
 ## [License](/LICENSE.md)
 
 
-## Closing
+## Thank You Note by K-young
 
 Thank you for using. Hope the tool helps your life balanced with your work! 
 
