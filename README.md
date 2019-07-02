@@ -10,9 +10,9 @@ Welcome to `"Work-Life Balance Keeper"` (the WLB Keeper or the Keeper) developed
 ### Prerequisites
 
 It is recommended to set up a virtual environment to ensure Python runs under the following prerequisites:
-  + Anaconda 3.7
-  + Python 3.7
-  + Pip
+    + Anaconda 3.7
+    + Python 3.7
+    + Pip
 
 
 ### Installation
@@ -45,10 +45,10 @@ As the Keeper stores data online and interacts with previous data real-time basi
 2. Click on your project, then from the project page, search for the "Google Sheets API" and enable it. Also search for the "Google Drive API" and enable it. 
 3. From either API page, or from the [API Credentials](https://console.developers.google.com/apis/credentials) page, follow a process to create and download credentials to use the APIs. Fill in the form to find out what kind of credentials:
 
-  + API: "Google Sheets API"
-  + Calling From: "Web Server"
-  + Accessing: "Application Data"
-  + Using Engines: "No"
+    + API: "Google Sheets API"
+    + Calling From: "Web Server"
+    + Accessing: "Application Data"
+    + Using Engines: "No"
 
 4. Go to [API Credentials](https://console.developers.google.com/apis/credentials) and choose “New Credentials > Service Account Key”.
    You will automatically download a JSON file with the data that would like like below:
