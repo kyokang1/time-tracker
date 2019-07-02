@@ -1,13 +1,13 @@
 # "Work-Life Balance Keeper"
 
-## Summary
+## 1. Summary
 
 Welcome to `"Work-Life Balance Keeper"` (the WLB Keeper or the Keeper) developed by K-young. The application will evaluate your work-life balance status and warn you if you work too hard. Based on the daily work hours the user input in the program, WLB Keeper will calculate the average working hours and display status message according to the pre-defined setting for 4 levels of status. The Keeper stores data online in `Google Spreadsheet` and interacts with the previous work history on real-time basis. And the program creates the work hour summary chart using `Plotly Online Chart Studio` package to sum up your work history and let you know the monthly and yearly work trend.
 
 
-## Set-up
+## 2. Set-up
 
-### Prerequisites
+### 2-1. Prerequisites
 
 It is recommended to set up a virtual environment to ensure Python runs under the following prerequisites:
   + Anaconda 3.7
@@ -15,7 +15,7 @@ It is recommended to set up a virtual environment to ensure Python runs under th
   + Pip
 
 
-### Installation
+### 2-2. Installation
 
 Install pip command to install the packages required to run the program. You can run the following command in command line:
 ```
@@ -37,7 +37,7 @@ pytest
 requests
 ```
 
-### Google API
+### 2-3. Google API
 
 As the Keeper stores data online and interacts with previous data real-time basis using `Google Spreadhsset`, you need to obtain the `Google API credentials` and set up the environment in Google spreadsheet. Steps are as follows:
 
@@ -72,7 +72,7 @@ Please refer to `https://gspread.readthedocs.io/en/latest/` for more information
 > NOTE: The  `"auth/"` is ignored from the version control using `.gitignore` file for security purpose. ".gitignore" prevents the secret credentials from being tracked in version control. 
 
 
-### plotly API
+### 2-4. plotly API
 
 As the program creates summary chart using online chart studio `Plotly`, the user needs API Key to use the API and run the program. Please [obtain an "plotly" API Key](https://plot.ly/settings/api#/) (e.g. "abc123") in the link and refer to [how to set up plotly in Python](https://plot.ly/python/getting-started/) for your information.
 
@@ -83,9 +83,9 @@ After obtaining an API Key, you need to input your API Key in the file ".env" to
 > NOTE: The ".env" is ignored from the version control using `.gitignore` file for security purpose. ".gitignore" prevents the ".env" file and its secret credentials from being tracked in version control. 
 
 
-## Usage
+## 3. Usage
 
-### Run the app
+### 3-1. Run the app
 
 For this local client version, Use your text editor or the command-line to run a local web server, then view your app in a browser at http://localhost:5000/:
 
@@ -100,18 +100,18 @@ flask run
 
 > NOTE: you can quit the server by pressing ctrl+c at any time. If you change a file, you'll likely need to restart the server for the changes to take effect.
 
-### Input Page
+### 3-2. Input Page
 
 In the input page, user inputs `Date` and `Work hours`. Input page configures input box of "date" as select box to allow only `MM/DD/YYYY` format to prevent invalid input of date. Work hours can only be input with numbers and the minimum value is set as `0` and the maximum value is set as `24` hours. 
 
-### Result Page
+### 3-3. Result Page
 
 Using the input hours, the program demonstrates you `daily average work hours`, `total work hours`, and `Work-Life Balance Status` of the latest month on monthly and yearly basis. You can refer to "Data Processing Logic" for calculation logic.
 
 If you click the `daily average work hours` and `total work hours`, the summary charts containing previous history are open automatically in `plotly` platform. You can scale the chart in the platform and manipulate on your own needs. Please visit the [plotly chart studio demo](https://plot.ly/online-chart-maker/) for more details.
 
 
-### Testing
+### 3-4. Testing
 
 The program has the function to run automated test to see if the program runs as designed. 
 
@@ -145,7 +145,7 @@ test_avg_hour_ytd
 ```
 
 
-## Data Processing Logic
+## 4. Data Processing Logic
 
 Interacting with previous work data, the program calculates the daily average work hours, which is `total work hours` divided by `number of weekdays`. `Total work hours` is the sum of all the work hours regardless it is weekdays or weekends, and it is divided by `number of weekdays`. So it is true that the work hour increases if you work in weekends so as to aggrevate the evaluation of work-life balance. Status messages are separate for Month-To-Date WLB status and Year-To-Date status.
 
@@ -163,10 +163,10 @@ Based on the daily average work hours, The Keeper will evaluates the Work-Life B
 > NOTE: you can also change the benchmark in the code.
 
 
-## [License](/LICENSE.md)
+## 5. [License](LICENSE)
 
 
-## Thank You Note by K-young
+## 6. Thank You Note by K-young
 
 Thank you for using. Hope the tool helps your life balanced with your work! 
 
