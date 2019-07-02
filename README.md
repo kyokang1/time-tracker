@@ -2,7 +2,7 @@
 
 ## Summary
 
-Welcome to `"Work-Life Balance Keeper"` (the WLB Keeper) developed by K-young. The application will evaluate your work-life balance status and warn you if you work too hard. Based on the daily work hours the user input in the program, WLB Keeper will calculate the average working hours and display status message according to the pre-defined setting for 4 levels of status. The Keeper stores data online in `Google Spreadsheet` and interacts with the previous work history on real-time basis. And the program creates the work hour summary chart using `Plotly Online Chart Studio` package to sum up your work history and let you know the monthly and yearly work trend.
+Welcome to `"Work-Life Balance Keeper"` (the WLB Keeper or the Keeper) developed by K-young. The application will evaluate your work-life balance status and warn you if you work too hard. Based on the daily work hours the user input in the program, WLB Keeper will calculate the average working hours and display status message according to the pre-defined setting for 4 levels of status. The Keeper stores data online in `Google Spreadsheet` and interacts with the previous work history on real-time basis. And the program creates the work hour summary chart using `Plotly Online Chart Studio` package to sum up your work history and let you know the monthly and yearly work trend.
 
 
 ## Set-up
@@ -14,11 +14,11 @@ It is recommended to set up a virtual environment to ensure Python runs under th
   + Python 3.7
   + Pip
 
+
 ### Installation
 
 Install pip command to install the packages required to run the program. You can run the following command in command line:
 ```
-pip install pytest # (only if you'll be writing tests)
 pip install -r requirements.txt
 ```
 
@@ -69,7 +69,7 @@ As the Keeper stores data online and interacts with previous data real-time basi
 
 Please refer to `https://gspread.readthedocs.io/en/latest/` for more information on API set up.
 
-Please note that the  `"auth/"` is ignored from the version control using `.gitignore` file for security purpose. ".gitignore" prevents the secret credentials from being tracked in version control. 
+> NOTE: The  `"auth/"` is ignored from the version control using `.gitignore` file for security purpose. ".gitignore" prevents the secret credentials from being tracked in version control. 
 
 
 ### plotly API
@@ -80,7 +80,7 @@ After obtaining an API Key, you need to input your API Key in the file ".env" to
 
     ALPHAVANTAGE_API_KEY="abc123"
 
-Please note that the ".env" is ignored from the version control using `.gitignore` file for security purpose. ".gitignore" prevents the ".env" file and its secret credentials from being tracked in version control. 
+> NOTE: The ".env" is ignored from the version control using `.gitignore` file for security purpose. ".gitignore" prevents the ".env" file and its secret credentials from being tracked in version control. 
 
 
 ## Usage
@@ -162,6 +162,9 @@ Based on the daily average work hours, The Keeper will evaluates the Work-Life B
 
 
 ## [License](/LICENSE.md)
+
+
+## Closing
 
 Thank you for using. Hope the tool helps your life balanced with your work! 
 
