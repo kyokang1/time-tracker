@@ -75,11 +75,12 @@ Please refer to `https://gspread.readthedocs.io/en/latest/` for more information
 
 As the program creates summary chart using online chart studio `Plotly`, the user needs API Key to use the API and run the program. Please [obtain an "plotly" API Key](https://plot.ly/settings/api#/) (e.g. "abc123") in the link and refer to [how to set up plotly in Python](https://plot.ly/python/getting-started/) for your information.
 
-After obtaining an API Key, you need to input your API Key in the file ".env" to specify your real API Key like below:
+After obtaining an API Key, you need to input your `"plotly username"` and `"plotly API Key"` and in the file ".env" to specify your real username and API Key like below:
 
-    ALPHAVANTAGE_API_KEY="abc123"
+    plotly_user_name = "userkyoung"
+    plotly_api_key = "abc123"
 
-> NOTE: The ".env" is ignored from the version control using `.gitignore` file for security purpose. ".gitignore" prevents the ".env" file and its secret credentials from being tracked in version control. 
+> NOTE: The credential information in ".env" file is ignored from the version control using `.gitignore` file for security purpose. ".gitignore" prevents the ".env" file and its secret credentials from being tracked in version control. 
 
 
 ## 3. Usage
@@ -171,3 +172,4 @@ Thank you for using. Hope the tool helps your life balanced with your work!
 We should remember... 
 Family is the most important thing in your life! 
 Other than that, anything can wait.
+
