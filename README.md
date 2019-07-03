@@ -75,7 +75,7 @@ Please refer to `https://gspread.readthedocs.io/en/latest/` for more information
 
 As the program creates summary chart using online chart studio `Plotly`, the user needs API Key to use the API and run the program. Please [obtain an "plotly" API Key](https://plot.ly/settings/api#/) (e.g. "abc123") in the link and refer to [how to set up plotly in Python](https://plot.ly/python/getting-started/) for your information.
 
-After obtaining an API Key, you need to input your `"plotly username"` and `"plotly API Key"` and in the file ".env" to specify your real username and API Key like below:
+After obtaining an API Key, you need to input your `"Plotly Username"` and `"Plotly API Key"` and in the file ".env" to specify your real username and API Key like below:
 
     plotly_user_name = "userkyoung"
     plotly_api_key = "abc123"
