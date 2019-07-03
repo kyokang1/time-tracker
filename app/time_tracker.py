@@ -562,30 +562,3 @@ if __name__ == "__main__":
     
 #    breakpoint()
 
-
-## TODO (as of Jun/22/2019):
-## 1) Insert a new row in the bottom (DONE)
-## 2) Date should be in date format (DONE)
-## 3) If the input date already existing, update the existing row (DONE)
-## 4) Validate input (Pass, input box is "number")
-## 5) Validate input of hour < 24 (Done by set the max value 24)
-
-## TODO Calculation (as of Jun/28/2019)
-## 1) create yyyy, mm, dd when parsing inputs (DONE)
-## 2) calculate by yyyy, and mm (DONE)
-
-## TODO (as of Jun/29/2019):
-## 1) value display (DONE)
-## 2) highlight the last column (DONE)
-## 3) title & axis name (DONE)
-## 4) 8 hour 9 hour 10 hour line (DONE)
-## 5) Chart for MTD (DONE)
-## 6) Chart for Total Hours (DONE)
-
-## TODO (as of Jun/30/2019)
-## 0) DEBUGGING the error not working with actual data (Done)
-## 1) .env & .gitignore update & plotly API separation (Done)
-## 2) Prepare for the presentation (DONE)
-## 3) Implement pytest (Done)
-## 4) README.md update => During the week
-## 5) Prepare planning documentation => During the week
