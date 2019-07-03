@@ -50,8 +50,7 @@ As the Keeper stores data online and interacts with previous data real-time basi
     + Accessing: "Application Data"
     + Using Engines: "No"
 
-4. Go to [API Credentials](https://console.developers.google.com/apis/credentials) and choose “New Credentials > Service Account Key”.
-   You will automatically download a JSON file with the data that would like like below:
+4. Select “New Credentials > Service Account Key”. Then, a JSON file with the credential data that look like below will be downloaded automatically:
 ```
 {
     "private_key_id": "2cd … ba4",
