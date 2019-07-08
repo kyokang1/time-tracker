@@ -91,10 +91,10 @@ For this local client version, Use your text editor or the command-line to run a
 
 ```sh
 # Mac Terminal or Windows Git Bash:
-FLASK_APP=web_app flask run
+FLASK_APP=app flask run
 
 # Windows Command Prompt:
-set FLASK_APP=web_app
+set FLASK_APP=app
 flask run
 ```
 
